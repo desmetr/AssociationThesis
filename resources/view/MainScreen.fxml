@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="248.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MainView">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu fx:id="graphicsMenu" mnemonicParsing="true" onAction="#onGraphicsMenuClicked" text="Graphics" />
+          <Menu fx:id="musicMenu" mnemonicParsing="true" onAction="#onMusicMenuClicked" text="Music" />
+          <Menu fx:id="associationMenu" mnemonicParsing="true" onAction="#onAssociationMenuClicked" text="Association" />
+        </menus>
+      </MenuBar>
+   </top>
+</BorderPane>

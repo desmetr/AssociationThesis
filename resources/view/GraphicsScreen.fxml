@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.GraphicsView">
+   <center>
+      <VBox alignment="CENTER" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+               <children>
+                  <Label fx:id="chosenFileLabel" text="Chosen File:" />
+                  <Label fx:id="nameOfChosenFile" text="No File Chosen" />
+                  <Button fx:id="newFileButton" mnemonicParsing="false" onAction="#onNewFileButtonClicked" text="Parse New File" />
+                  <Button fx:id="parseAllButton" mnemonicParsing="false" onAction="#onParseAllPaintingsClicked" text="Parse All Paintings" />
+                  <Line endX="100.0" startX="100.0" startY="100.0" />
+                  <Button fx:id="augmentationButton" mnemonicParsing="false" onAction="#onAugmentationButtonClicked" text="Augmentation" />
+                  <TextField fx:id="augmentationTextField" />
+               </children>
+            </HBox>
+            <TabPane fx:id="mainTabPane" maxHeight="600.0" minHeight="600.0" prefHeight="600.0" VBox.vgrow="ALWAYS">
+              <tabs>
+                <Tab fx:id="originalImageTab" text="Original Image">
+                     <content>
+                        <ImageView fx:id="originalImageView" fitHeight="570.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true" />
+                     </content>
+                </Tab>
+                <Tab text="Noise Removed">
+                     <content>
+                        <ImageView fx:id="noiseRemovedImageView" fitHeight="570.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true" />
+                     </content>
+                </Tab>
+                  <Tab text="Line Detection">
+                     <content>
+                        <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+                          <tabs>
+                            <Tab text="Lines">
+                                 <content>
+                                    <ImageView fx:id="linesImageView" fitHeight="570.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true" />
+                                 </content>
+                              </Tab>
+                            <Tab text="Line Segments">
+                                 <content>
+                                    <ImageView fx:id="lineSegmentsImageView" fitHeight="570.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true" />
+                                 </content>
+                              </Tab>
+                              <Tab text="Lines Vertical">
+                                 <content>
+                                    <ImageView fx:id="linesVerticalImageView" fitHeight="570.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true" />
+                                 </content>
+                              </Tab>
+                              <Tab text="Lines Horizontal">
+                                 <content>
+                                    <ImageView fx:id="linesHorizontalImageView" fitHeight="570.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true" />
+                                 </content>
+                              </Tab>
+                          </tabs>
+                        </TabPane>
+                     </content>
+                  </Tab>
+                  <Tab text="Color Segmentation">
+                     <content>
+                        <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+                          <tabs>
+                            <Tab text="Black">
+                                 <content>
+                                    <ImageView fx:id="blackImageView" fitHeight="570.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true" />
+                                 </content>
+                            </Tab>
+                            <Tab text="White">
+                                 <content>
+                                    <ImageView fx:id="whiteImageView" fitHeight="570.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true" />
+                                 </content>
+                            </Tab>
+                              <Tab text="Red">
+                                 <content>
+                                    <ImageView fx:id="redImageView" fitHeight="570.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true" />
+                                 </content>
+                              </Tab>
+                              <Tab text="Lime">
+                                 <content>
+                                    <ImageView fx:id="limeImageView" fitHeight="570.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true" />
+                                 </content>
+                              </Tab>
+                              <Tab text="Blue">
+                                 <content>
+                                    <ImageView fx:id="blueImageView" fitHeight="570.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true" />
+                                 </content>
+                              </Tab>
+                              <Tab text="Yellow">
+                                 <content>
+                                    <ImageView fx:id="yellowImageView" fitHeight="570.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true" />
+                                 </content>
+                              </Tab>
+                              <Tab text="Cyan">
+                                 <content>
+                                    <ImageView fx:id="cyanImageView" fitHeight="570.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true" />
+                                 </content>
+                              </Tab>
+                              <Tab text="Magenta">
+                                 <content>
+                                    <ImageView fx:id="magentaImageView" fitHeight="570.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true" />
+                                 </content>
+                              </Tab>
+                              <Tab text="Green">
+                                 <content>
+                                    <ImageView fx:id="greenImageView" fitHeight="570.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true" />
+                                 </content>
+                              </Tab>
+                              <Tab text="Purple">
+                                 <content>
+                                    <ImageView fx:id="purpleImageView" fitHeight="570.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true" />
+                                 </content>
+                              </Tab>
+                          </tabs>
+                        </TabPane>
+                     </content>
+                  </Tab>
+                  <Tab text="Ellipse Detection">
+                     <content>
+                        <ImageView fx:id="ellipsesImageView" fitHeight="570.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true" />
+                     </content>
+                  </Tab>
+                  <Tab text="Edge Detection">
+                     <content>
+                        <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+                          <tabs>
+                            <Tab text="Canny Contour">
+                                 <content>
+                                    <ImageView fx:id="cannyContourImageView" fitHeight="570.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true" />
+                                 </content>
+                              </Tab>
+                            <Tab text="Binary Edges">
+                                 <content>
+                                    <ImageView fx:id="binaryEdgesImageView" fitHeight="570.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true" />
+                                 </content>
+                              </Tab>
+                              <Tab text="Canny Trace">
+                                 <content>
+                                    <ImageView fx:id="cannyTraceImageView" fitHeight="570.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true" />
+                                 </content>
+                              </Tab>
+                          </tabs>
+                        </TabPane>
+                     </content>
+                  </Tab>
+                  <Tab text="Polygon Detection">
+                     <content>
+                        <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+                          <tabs>
+                            <Tab text="Positive Image">
+                                 <content>
+                                    <ImageView fx:id="positivePolygonsImageView" fitHeight="570.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true" />
+                                 </content>
+                            </Tab>
+                            <Tab text="Negative Image">
+                                 <content>
+                                    <ImageView fx:id="negativePolygonsImageView" fitHeight="570.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true" />
+                                 </content>
+                            </Tab>
+                          </tabs>
+                        </TabPane>
+                     </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

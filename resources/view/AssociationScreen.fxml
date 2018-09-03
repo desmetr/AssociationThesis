@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1017.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AssociationView">
+   <center>
+      <TextArea fx:id="textAreaResult" prefHeight="468.0" prefWidth="690.0" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets top="10.0" />
+         </BorderPane.margin></TextArea>
+   </center>
+   <top>
+      <GridPane alignment="CENTER" hgap="50.0" vgap="30.0" BorderPane.alignment="CENTER">
+        <columnConstraints>
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <CheckBox fx:id="verboseCheckBox" mnemonicParsing="false" onAction="#onVerboseCheckBoxClicked" text="Verbose" GridPane.columnIndex="4" />
+            <Button fx:id="processImagesButton" mnemonicParsing="false" onAction="#onProcessImagesButtonClicked" text="Process Images" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button fx:id="processMusicButton" mnemonicParsing="false" onAction="#onProcessMusicButtonClicked" text="Process Music" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Button fx:id="rankButton" mnemonicParsing="false" onAction="#onRankButtonClicked" text="Rank" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <Button fx:id="makeCSVButton" mnemonicParsing="false" onAction="#onMakeCSVButtonClicked" text="Make CSV" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Button fx:id="associationButton" mnemonicParsing="false" onAction="#onAssociationButtonClicked" prefHeight="26.0" prefWidth="123.0" text="Do Association" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Label text="Association" GridPane.columnIndex="2">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </GridPane>
+   </top>
+</BorderPane>
