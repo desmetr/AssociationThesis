@@ -62,6 +62,7 @@ import graphics.model.data.ColorData;
 import graphics.model.data.NeuralNetworkDataManager;
 import utilities.GeneralData;
 import utilities.GeneralData.Hough;
+import utilities.Utilities;
 
 /*
  * list of algorithms to parse images
@@ -207,10 +208,10 @@ public class GraphicsParser
 		dataManager.setNumberOfEllipses(fitEllipses());
 
 		// Compute number of polygons + graphical feedback.
-		imagePositivePolygonDetection = GeneralData.deepCopy(image);
+		imagePositivePolygonDetection = Utilities.deepCopy(image);
 		detectPolygons(imagePositivePolygonDetection, true);
 		
-		imageNegativePolygonDetection = convertImageToNegative(GeneralData.deepCopy(image));
+		imageNegativePolygonDetection = convertImageToNegative(Utilities.deepCopy(image));
 		detectPolygons(imageNegativePolygonDetection, false);
 		
 		getShannonEntropy(image);
@@ -221,7 +222,7 @@ public class GraphicsParser
 	private void removeNoise()
 	{
 		GrayF32 inputGrayF32Image = UtilImageIO.loadImage(UtilIO.pathExample(GeneralData.currentFilePath),GrayF32.class);
-		imageNoiseRemoved = GeneralData.deepCopy(image);
+		imageNoiseRemoved = Utilities.deepCopy(image);
 
 		GrayF32 outputGrayF32Image = inputGrayF32Image.createSameShape();
 
@@ -270,7 +271,7 @@ public class GraphicsParser
 				break;
 		}
 		
-		imageLinesDetected = GeneralData.deepCopy(image);
+		imageLinesDetected = Utilities.deepCopy(image);
 
 		Graphics2D g2 = imageLinesDetected.createGraphics();
 		
@@ -335,7 +336,7 @@ public class GraphicsParser
 
 		List<LineSegment2D_F32> found = detector.detect(input);
 
-		imageLineSegmentsDetected = GeneralData.deepCopy(image);
+		imageLineSegmentsDetected = Utilities.deepCopy(image);
 		Graphics2D g2 = imageLineSegmentsDetected.createGraphics();
 		
 		float error = 0.05f;
@@ -496,12 +497,12 @@ public class GraphicsParser
 		ColorHsv.rgbToHsv_F32(input, hsv);
 		
 		// Convert hex into HSV
-		float[] targetHSV = GeneralData.convertHexToHSV(targetColorHex);
+		float[] targetHSV = Utilities.convertHexToHSV(targetColorHex);
 		float targetHue = targetHSV[0];
 		float targetSaturation = targetHSV[1];
 
 		// Convert hex into RGB
-		int[] targetRGB = GeneralData.convertHexToRGB(targetColorHex);
+		int[] targetRGB = Utilities.convertHexToRGB(targetColorHex);
 
 		// Euclidean distance squared threshold for deciding which pixels are members of the selected set
 		float maxDist2 = 0.4f * 0.4f;
@@ -525,7 +526,7 @@ public class GraphicsParser
 				// Distinguish between black/white and all the other colors.
 				if (targetColorHex == 0x000000 | targetColorHex == 0xFFFFFF)
 				{
-					int[] currentRGB = GeneralData.convertHexToRGB(image.getRGB(x, y));
+					int[] currentRGB = Utilities.convertHexToRGB(image.getRGB(x, y));
 					distance = (float) Math.sqrt(Math.pow(currentRGB[0] - targetRGB[0], 2) + Math.pow(currentRGB[1] - targetRGB[1], 2) + Math.pow(currentRGB[2] - targetRGB[2], 2));
 				}
 				else
@@ -562,12 +563,12 @@ public class GraphicsParser
 		ColorHsv.rgbToHsv_F32(input, hsv);
 		
 		// Convert hex into HSV
-		float[] targetHSV = GeneralData.convertHexToHSV(targetColorHex);
+		float[] targetHSV = Utilities.convertHexToHSV(targetColorHex);
 		float targetHue = targetHSV[0];
 		float targetSaturation = targetHSV[1];
 
 		// Convert hex into RGB
-		int[] targetRGB = GeneralData.convertHexToRGB(targetColorHex);
+		int[] targetRGB = Utilities.convertHexToRGB(targetColorHex);
 		
 		// Euclidean distance squared threshold for deciding which pixels are members of the selected set
 		float maxDist2 = 0.4f * 0.4f; 
@@ -590,7 +591,7 @@ public class GraphicsParser
 				// Distinguish between black/white and all the other colors.
 				if (targetColorHex == 0x000000 | targetColorHex == 0xFFFFFF)
 				{
-					int[] currentRGB = GeneralData.convertHexToRGB(image.getRGB(x, y));
+					int[] currentRGB = Utilities.convertHexToRGB(image.getRGB(x, y));
 					distance = (float) Math.sqrt(Math.pow(currentRGB[0] - targetRGB[0], 2) + Math.pow(currentRGB[1] - targetRGB[1], 2) + Math.pow(currentRGB[2] - targetRGB[2], 2));
 				}
 				else
@@ -655,7 +656,7 @@ public class GraphicsParser
 	// https://github.com/lessthanoptimal/BoofCV/blob/v0.23/examples/src/boofcv/examples/features/ExampleFitEllipse.java
 	private int fitEllipses()
 	{
-		imageEllipseDetection = GeneralData.deepCopy(image);
+		imageEllipseDetection = Utilities.deepCopy(image);
 		GrayF32 input = ConvertBufferedImage.convertFromSingle(imageEllipseDetection, null, GrayF32.class);
 		GrayU8 binary = new GrayU8(input.width,input.height);
 
@@ -758,7 +759,7 @@ public class GraphicsParser
 	
 	private void edgeDetection()
 	{
-		BufferedImage displayImage = GeneralData.deepCopy(image);
+		BufferedImage displayImage = Utilities.deepCopy(image);
 		GrayU8 gray = ConvertBufferedImage.convertFrom(displayImage,(GrayU8)null);
 		GrayU8 edgeImage = gray.createSameShape();
 

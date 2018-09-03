@@ -4,7 +4,6 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.File;
-import java.io.IOException;
 
 import org.junit.jupiter.api.Test;
 
@@ -34,13 +33,9 @@ class MusicXMLParserTestCase
 	
 	public MusicXMLParserTestCase() 
 	{
-		try
-		{
-			new PropertyManager().getPropertyValues();
-			testXMLDestinationPath = PropertyManager.getDestinationFolderMusic();
-			testFailXMLDestinationPath = PropertyManager.getFailDestinationFolderMusic();
-		} 
-		catch (IOException e) {	e.printStackTrace();	}
+		new PropertyManager().getPropertyValues();
+		testXMLDestinationPath = PropertyManager.getDestinationFolderMusic();
+		testFailXMLDestinationPath = PropertyManager.getFailDestinationFolderMusic();
 	}
 
 	@Test

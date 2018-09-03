@@ -34,7 +34,7 @@ public class PropertyManager
 	public static String getAllDataPath()					{	return allDataPath;					}
 	
 	public static String getSourceFolderGraphics() 			{	return sourceFolderGraphics;		}
-	public static String getResultFoldeGraphicsr() 			{	return resultFolderGraphics;		}
+	public static String getResultFolderGraphics() 			{	return resultFolderGraphics;		}
 	public static String getBruegelFolderGraphics() 		{	return bruegelFolderGraphics;		}
 	public static String getMondriaanFolderGraphics() 		{	return mondriaanFolderGraphics;		}
 	public static String getPicassoFolderGraphics() 		{	return picassoFolderGraphics;		}

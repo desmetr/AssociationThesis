@@ -9,7 +9,7 @@ import music.model.music.MusicalData.NoteLength;
 import music.model.music.MusicalData.NoteName;
 import music.model.music.MusicalData.ScaleDegree;
 import music.model.music.MusicalData.TimeSignatureEnum;
-import utilities.GeneralData;
+import utilities.Utilities;
 
 public class Piece 
 {
@@ -182,7 +182,7 @@ public class Piece
 			int indexCurrentNote = MusicalData.notes.indexOf(currentNote.name);
 			
 //			System.out.println(previousNote.name + "" + previousNote.pitch + " " +indexPreviousNote + ", " + currentNote.name + currentNote.pitch + " " + indexCurrentNote + " = " + GeneralData.mod(indexCurrentNote - indexPreviousNote, 12));
-			int intervalLength = GeneralData.mod(indexCurrentNote - indexPreviousNote, 12);
+			int intervalLength = Utilities.mod(indexCurrentNote - indexPreviousNote, 12);
 			if (intervalLength == 0 && previousNote.pitch == currentNote.pitch)
 				interval = MusicalData.NoteInterval.PERFECT_UNISON;
 			else if (intervalLength == 0 && (Math.abs(previousNote.pitch - currentNote.pitch) == 1))

@@ -31,63 +31,197 @@
     </plugins>
   </build>
   
-  <dependencies>
-	<!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine -->
-	<dependency>
-	    <groupId>org.junit.jupiter</groupId>
-	    <artifactId>junit-jupiter-engine</artifactId>
-	    <version>5.3.0-M1</version>
-	    <scope>compile</scope>
-	</dependency>
+	<dependencies>
+		<!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine -->
+		<dependency>
+		    <groupId>org.junit.jupiter</groupId>
+		    <artifactId>junit-jupiter-engine</artifactId>
+		    <version>5.3.0-M1</version>
+		    <scope>compile</scope>
+		</dependency>
 
-	<!-- https://mvnrepository.com/artifact/junit/junit -->
-	<dependency>
-	    <groupId>junit</groupId>
-	    <artifactId>junit</artifactId>
-	    <version>4.12</version>
-	    <scope>compile</scope>
-	</dependency>
+		<!-- https://mvnrepository.com/artifact/junit/junit -->
+		<dependency>
+		    <groupId>junit</groupId>
+		    <artifactId>junit</artifactId>
+		    <version>4.12</version>
+		    <scope>compile</scope>
+		</dependency>
 
-	<!-- https://mvnrepository.com/artifact/org.jdom/jdom2 -->
-	<dependency>
-	    <groupId>org.jdom</groupId>
-	    <artifactId>jdom2</artifactId>
-	    <version>2.0.6</version>
-	</dependency>
+		<!-- https://mvnrepository.com/artifact/org.jdom/jdom2 -->
+		<dependency>
+		    <groupId>org.jdom</groupId>
+		    <artifactId>jdom2</artifactId>
+		    <version>2.0.6</version>
+		</dependency>
 	
-	<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
-	<dependency>
-	    <groupId>org.slf4j</groupId>
-	    <artifactId>slf4j-api</artifactId>
-	    <version>1.7.25</version>
-	</dependency>  
+		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+		<dependency>
+		    <groupId>org.slf4j</groupId>
+		    <artifactId>slf4j-api</artifactId>
+		    <version>1.7.25</version>
+		</dependency>  
 	
-	<dependency>
-		<groupId>org.boofcv</groupId>
-		<artifactId>boofcv-core</artifactId>
-  		<version>0.28</version>
-	</dependency>
-	<dependency>
-    	<groupId>org.boofcv</groupId>
-    	<artifactId>visualize</artifactId>
-    	<version>0.26</version>
-	</dependency>
-	<!-- https://mvnrepository.com/artifact/net.imagej/ij -->
-	<dependency>
-	    <groupId>net.imagej</groupId>
-	    <artifactId>ij</artifactId>
-	    <version>1.49c</version>
-	</dependency>
-	<dependency>
-	    <groupId>org.bytedeco</groupId>
-	    <artifactId>javacv-platform</artifactId>
-	    <version>1.4</version>
-	  </dependency>
-	<dependency>
-    	<groupId>org.apache.commons</groupId>
-    	<artifactId>commons-math3</artifactId>
-    	<version>3.5</version>
-	</dependency>
+		<!-- BoofCV Core -->
+		<dependency>
+			<groupId>org.boofcv</groupId>
+			<artifactId>boofcv-core</artifactId>
+	  		<version>0.28</version>
+		</dependency>
+		
+		<!-- BoofCV Visualize -->
+		<dependency>
+	    	<groupId>org.boofcv</groupId>
+	    	<artifactId>visualize</artifactId>
+	    	<version>0.26</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/net.imagej/ij -->
+		<dependency>
+		    <groupId>net.imagej</groupId>
+		    <artifactId>ij</artifactId>
+		    <version>1.49c</version>
+		</dependency>
+		
+		<!-- JavaCV -->
+		<dependency>
+		    <groupId>org.bytedeco</groupId>
+		    <artifactId>javacv-platform</artifactId>
+		    <version>1.4</version>
+		</dependency>
+		  
+		<!-- Apache Commons Math3 -->
+		<dependency>
+	    	<groupId>org.apache.commons</groupId>
+	    	<artifactId>commons-math3</artifactId>
+	    	<version>3.5</version>
+		</dependency>
+	
+		<!-- DeepLearning4J Core -->
+		<dependency>
+			<groupId>org.deeplearning4j</groupId>
+			<artifactId>deeplearning4j-core</artifactId>
+			<version>0.9.1</version>
+			<exclusions>
+			    <exclusion>
+			        <groupId>org.slf4j</groupId>
+			        <artifactId>slf4j-log4j12</artifactId>
+			    </exclusion>
+			</exclusions> 
+		</dependency>
+		
+		<!-- DeepLearning4J UI -->
+		<dependency>
+		    <groupId>org.deeplearning4j</groupId>
+		    <artifactId>deeplearning4j-ui_2.11</artifactId>
+		    <version>0.9.1</version>
+		    <exclusions>
+			    <exclusion>
+			        <groupId>org.slf4j</groupId>
+			        <artifactId>slf4j-log4j12</artifactId>
+			    </exclusion>
+			</exclusions> 
+		</dependency>
+		
+		<!-- Fast Java computing -->
+		<dependency>
+		    <groupId>org.nd4j</groupId>
+		    <artifactId>nd4j-native-platform</artifactId>
+		    <version>0.9.1</version>
+		    <exclusions>
+			    <exclusion>
+			        <groupId>org.slf4j</groupId>
+			        <artifactId>slf4j-log4j12</artifactId>
+			    </exclusion>
+			</exclusions> 
+		</dependency>
+
+		<!-- Spark Core -->
+		<dependency>
+		    <groupId>org.apache.spark</groupId>
+		    <artifactId>spark-core_2.11</artifactId>
+		    <version>2.3.0</version>
+		    <exclusions>
+				<exclusion>
+	            	<groupId>com.fasterxml.jackson.core</groupId>
+	              	<artifactId>jackson-databind</artifactId>
+	          	</exclusion>
+          		<exclusion>
+		        	<groupId>org.slf4j</groupId>
+		        	<artifactId>slf4j-log4j12</artifactId>
+    			</exclusion>
+            	<exclusion>
+            		<groupId>com.google.guava</groupId>
+              		<artifactId>guava</artifactId>
+          		</exclusion>
+      		</exclusions>
+		</dependency>
+		
+		<!-- Spark Streaming -->
+		<dependency>
+			<groupId>org.apache.spark</groupId>
+		    <artifactId>spark-streaming_2.10</artifactId>
+		    <version>2.1.0</version>
+		   	<exclusions>
+         		<exclusion>
+              		<groupId>com.fasterxml.jackson.core</groupId>
+              		<artifactId>jackson-databind</artifactId>
+          		</exclusion>
+         		<exclusion>
+			        <groupId>org.slf4j</groupId>
+			        <artifactId>slf4j-log4j12</artifactId>
+    			</exclusion>
+                <exclusion>
+		            <groupId>com.google.guava</groupId>
+		            <artifactId>guava</artifactId>
+          		</exclusion>
+      		</exclusions>
+		</dependency>
+		
+		<!-- Datavec -->
+		<dependency>
+			<groupId>org.datavec</groupId>
+		   	<artifactId>datavec-spark_2.10</artifactId>
+		   	<version>0.9.1_spark_1</version>
+		   	<exclusions>
+          		<exclusion>
+              		<groupId>com.fasterxml.jackson.core</groupId>
+              		<artifactId>jackson-databind</artifactId>
+          		</exclusion>
+          		<exclusion>
+              		<groupId>com.google.guava</groupId>
+              		<artifactId>guava</artifactId>
+         		</exclusion>
+         		<exclusion>
+			        <groupId>org.slf4j</groupId>
+			        <artifactId>slf4j-log4j12</artifactId>
+    			</exclusion>
+      		</exclusions>
+		</dependency>
+
+		<!-- Jackson : only this version works -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+		  	<artifactId>jackson-databind</artifactId>
+		  	<version>2.6.5</version>
+		</dependency>
+		<dependency>
+			  <groupId>com.fasterxml.jackson.core</groupId>
+			  <artifactId>jackson-annotations</artifactId>
+			  <version>2.6.5</version>
+		</dependency>
+		<dependency>
+			  <groupId>com.fasterxml.jackson.core</groupId>
+			  <artifactId>jackson-core</artifactId>
+			  <version>2.6.5</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+		<dependency>
+		    <groupId>com.google.guava</groupId>
+		    <artifactId>guava</artifactId>
+		    <version>15.0</version>
+		</dependency>	
 	
   </dependencies>
 

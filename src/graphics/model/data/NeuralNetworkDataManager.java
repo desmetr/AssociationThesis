@@ -5,13 +5,11 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.util.Iterator;
 import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
 
-import utilities.GeneralData;;
+import utilities.GeneralData;
+import utilities.PropertyManager;
+import utilities.Utilities;;
 
 public class NeuralNetworkDataManager 
 {
@@ -147,7 +145,7 @@ public class NeuralNetworkDataManager
 		
 		try 
 		{
-			Files.write(Paths.get("results" + File.separator + "vectorsGraphics.csv"), vectorStringBuilder.toString().getBytes(), StandardOpenOption.APPEND);
+			Files.write(Paths.get(PropertyManager.getResultFolderGraphics() + "vectorsGraphics.csv"), vectorStringBuilder.toString().getBytes(), StandardOpenOption.APPEND);
 		} 
 		catch (IOException e) {	e.printStackTrace();	}
 	}
@@ -194,12 +192,12 @@ public class NeuralNetworkDataManager
 		vectorStringBuilder.append(GeneralData.separator);
 		vectorStringBuilder.append(polygonCounts.get(9));
 		vectorStringBuilder.append(GeneralData.separator);		
-		vectorStringBuilder.append(GeneralData.decimalFormat(entropy));
+		vectorStringBuilder.append(Utilities.decimalFormat(entropy));
 		vectorStringBuilder.append(GeneralData.separator);
 		
 		for (ColorData color : GeneralData.listOfColors)
 		{
-	        vectorStringBuilder.append(GeneralData.decimalFormat(color.getPercentage()));
+	        vectorStringBuilder.append(Utilities.decimalFormat(color.getPercentage()));
 	        vectorStringBuilder.append(GeneralData.separator);
 		}
 		
