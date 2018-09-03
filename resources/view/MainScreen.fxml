@@ -2,15 +2,25 @@
 
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="248.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MainView">
+<BorderPane id="sub-screen" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.1" fx:controller="view.MainView">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
-          <Menu fx:id="graphicsMenu" mnemonicParsing="true" onAction="#onGraphicsMenuClicked" text="Graphics" />
-          <Menu fx:id="musicMenu" mnemonicParsing="true" onAction="#onMusicMenuClicked" text="Music" />
-          <Menu fx:id="associationMenu" mnemonicParsing="true" onAction="#onAssociationMenuClicked" text="Association" />
+          <Menu fx:id="graphicsMenu" mnemonicParsing="true" text="Graphics">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#onShowParserGraphics" text="Show Parser" />
+               </items></Menu>
+          <Menu fx:id="musicMenu" mnemonicParsing="true" text="Music">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#onShowParserMusic" text="Show Parser" />
+               </items></Menu>
+          <Menu fx:id="associationMenu" mnemonicParsing="true" text="Association">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#onShowActionsAssociation" text="Show Actions" />
+               </items></Menu>
         </menus>
       </MenuBar>
    </top>

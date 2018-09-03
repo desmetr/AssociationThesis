@@ -12,23 +12,20 @@ public class MainView
 	}
 	
 	@FXML 
-	public void onGraphicsMenuClicked()
+	public void onShowParserGraphics()
 	{
-		System.out.println("A");
 		Main.showScreen(ScreenType.GRAPHICS);
 	}
 
 	@FXML 
-	public void onMusicMenuClicked()
+	public void onShowParserMusic()
 	{
-		System.out.println("B");
 		Main.showScreen(ScreenType.MUSIC);
 	}
 
 	@FXML
-	public void onAssociationMenuClicked()
+	public void onShowActionsAssociation()
 	{
-		System.out.println("C");
 		Main.showScreen(ScreenType.ASSOCIATION);
 	}
 }
