@@ -20,7 +20,7 @@
                   <Label fx:id="chosenFileLabel" text="Chosen File:" />
                   <Label fx:id="nameOfChosenFile" text="No File Chosen" />
                   <Button fx:id="newFileButton" mnemonicParsing="false" onAction="#onNewFileButtonClicked" text="Parse New File" />
-                  <Button fx:id="parseAllButton" mnemonicParsing="false" onAction="#onParseAllPaintingsClicked" text="Parse All Paintings" />
+                  <Button fx:id="parseAllButton" mnemonicParsing="false" onAction="#onParseAllPaintingsClicked" text="Parse Test Paintings" />
                   <Line endX="100.0" startX="100.0" startY="100.0" />
                   <Button fx:id="augmentationButton" mnemonicParsing="false" onAction="#onAugmentationButtonClicked" text="Augmentation" />
                   <TextField fx:id="augmentationTextField" />

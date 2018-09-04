@@ -85,7 +85,7 @@ public class GraphicsView
 			File[] directoryListing = dir.listFiles();
 			
 			dataManager.writeLabelsToFile();
-			
+			System.out.println(folder);
 			if (directoryListing != null) 
 			{
 				for (File selectedFile : directoryListing) 
@@ -132,8 +132,7 @@ public class GraphicsView
 				if (! GeneralData.currentFileName.equals(""))
 					nameOfChosenFile.setText(GeneralData.currentFileName);
 				
-				originalImage = ImageIO.read(selectedFile);
-				graphicsParser.parseImage(originalImage);
+				graphicsParser.parseImage(ImageIO.read(selectedFile));
 				dataManager.writeLabelsToFile();
 				dataManager.writeValuesToFile();
 				dataManager.reset();

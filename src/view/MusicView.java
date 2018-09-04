@@ -8,9 +8,6 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.Random;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
 
@@ -25,8 +22,8 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
-import music.model.music.MusicalData;
 import music.model.music.MusicDataManager;
+import music.model.music.MusicalData;
 import music.model.music.Piece;
 import music.model.parser.MusicXMLParser;
 import utilities.GeneralData;
@@ -54,8 +51,6 @@ public class MusicView
 	MusicXMLParser parser;
 	
 	private Random rand;
-	
-	private static final Logger logger = LoggerFactory.getLogger("Main");
 	
 	@FXML 
 	public void initialize()
@@ -99,7 +94,7 @@ public class MusicView
 		try 
 		{
 			FileChooser fileChooser = new FileChooser();
-			fileChooser.setInitialDirectory(new File("xml_dest"));
+			fileChooser.setInitialDirectory(new File(PropertyManager.getTestFolderMusic()));
 			fileChooser.setTitle("Open Resource File");
 			fileChooser.getExtensionFilters().addAll(new ExtensionFilter("XML Files", "*.xml"));
 			File selectedFile = fileChooser.showOpenDialog(GeneralData.primaryStage);
@@ -111,10 +106,6 @@ public class MusicView
 		    dataManager.writeValuesToFile();
 			
 			generalTextArea.setText(currentPiece.toString());
-			
-			logger.info(currentFile);
-			logger.info("-----------------");
-			logger.info(currentPiece.toString());
 			
 			if (! currentFile.equals(""))
 				nameOfChosenFile.setText(currentFile);

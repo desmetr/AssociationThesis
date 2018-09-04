@@ -1,8 +1,12 @@
 package utilities;
 
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.InputStream;
 import java.util.Properties;
+
+import graphics.model.data.ColorData;
 
 public class PropertyManager 
 {
@@ -52,6 +56,12 @@ public class PropertyManager
 //	public static String getJazzFolderMusic() 				{	return jazzFolderMusic;				}
 //	public static String getPopFolderMusic() 				{	return popFolderMusic;				}
 	
+	public void getAllValues()
+	{
+		getPropertyValues();
+		getColors();
+	}
+	
 	public void getPropertyValues()
 	{
  		try 
@@ -92,5 +102,25 @@ public class PropertyManager
 //			popFolderMusic = prop.getProperty("popFolderMusic");
  		} 
  		catch (Exception e) {	e.printStackTrace();	} 
+	}
+	
+	private void getColors()
+	{
+		String propFileName = "resources/colors.dat";
+        BufferedReader br = null;
+        String line = "";
+        String cvsSplitBy = "=";
+        
+        try
+        {
+            br = new BufferedReader(new FileReader(propFileName));
+            while ((line = br.readLine()) != null) 
+            {
+                String[] colorData = line.split(cvsSplitBy);
+                ColorData newColorData = new ColorData(colorData[0], Integer.parseInt(colorData[1].substring(2), 16));
+                GeneralData.listOfColors.add(newColorData);
+            }
+        } 
+        catch (Exception e) {	e.printStackTrace();	} 
 	}
 }
