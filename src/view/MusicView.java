@@ -26,7 +26,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import music.model.music.MusicalData;
-import music.model.music.NeuralNetworkDataManager;
+import music.model.music.MusicDataManager;
 import music.model.music.Piece;
 import music.model.parser.MusicXMLParser;
 import utilities.GeneralData;
@@ -50,7 +50,7 @@ public class MusicView
 	
 	private Piece currentPiece;
 	private String currentFile;
-	private NeuralNetworkDataManager dataManager;
+	private MusicDataManager dataManager;
 	MusicXMLParser parser;
 	
 	private Random rand;
@@ -61,19 +61,15 @@ public class MusicView
 	public void initialize()
 	{
 		parser = new MusicXMLParser();
-		dataManager = new NeuralNetworkDataManager();
+		dataManager = new MusicDataManager();
 		dataManager.writeLabelsToFile();
 	}
 	
 	@FXML
-	public void onParseAllScoresClicked()
+	public void onParseAllTestScoresClicked()
 	{
-		parseAllScoresInFolder(PropertyManager.getClassicalFolderMusic());
-		System.out.println("Classical scores done.");
-		parseAllScoresInFolder(PropertyManager.getJazzFolderMusic());
-		System.out.println("Jazz scores done.");
-		parseAllScoresInFolder(PropertyManager.getPopFolderMusic());
-		System.out.println("Pop scores done.");
+		parseAllScoresInFolder(PropertyManager.getTestFolderMusic());
+		System.out.println("Test scores parsed.");
 	}
 	
 	private void parseAllScoresInFolder(String folder)

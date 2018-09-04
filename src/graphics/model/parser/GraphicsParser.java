@@ -59,7 +59,7 @@ import georegression.struct.line.LineSegment2D_F32;
 import georegression.struct.shapes.EllipseRotated_F64;
 import georegression.struct.shapes.Polygon2D_F64;
 import graphics.model.data.ColorData;
-import graphics.model.data.NeuralNetworkDataManager;
+import graphics.model.data.GraphicsDataManager;
 import utilities.GeneralData;
 import utilities.GeneralData.Hough;
 import utilities.Utilities;
@@ -77,7 +77,7 @@ import utilities.Utilities;
 
 public class GraphicsParser
 {
-	private NeuralNetworkDataManager dataManager = new NeuralNetworkDataManager();
+	private GraphicsDataManager dataManager = new GraphicsDataManager();
 
 	private int totalNumberOfPixels;
 	
@@ -139,9 +139,9 @@ public class GraphicsParser
 	public BufferedImage getImageCannyTrace() 				{	return imageCannyTrace;					}
 	public BufferedImage getImagePositivePolygonDetection() {	return imagePositivePolygonDetection;	}
 	public BufferedImage getImageNegativePolygonDetection() {	return imageNegativePolygonDetection;	}
-	public NeuralNetworkDataManager getNetworkDataManager() {	return dataManager;						}
+	public GraphicsDataManager getNetworkDataManager() {	return dataManager;						}
 	
-	public GraphicsParser(NeuralNetworkDataManager dataManager)
+	public GraphicsParser(GraphicsDataManager dataManager)
 	{
 		this.dataManager = dataManager;
 	}

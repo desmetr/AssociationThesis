@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import utilities.GeneralData.ScreenType;
+import utilities.PropertyManager;
 import view.MainView;
 
 public class Main extends Application
@@ -22,6 +23,8 @@ public class Main extends Application
 	{
 		try
 		{	
+			new PropertyManager().getPropertyValues();
+			
 			FXMLLoader loaderMain = new FXMLLoader();
 			loaderMain.setLocation(getClass().getResource("/view/MainScreen.fxml"));
 			root = loaderMain.load(); 

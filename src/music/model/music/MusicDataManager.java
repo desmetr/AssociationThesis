@@ -19,8 +19,9 @@ import music.model.music.MusicalData.ScaleDegree;
 import java.util.Set;
 
 import utilities.GeneralData;
+import utilities.PropertyManager;
 
-public class NeuralNetworkDataManager 
+public class MusicDataManager 
 {
 	private LinkedHashMap<MusicalData.NoteName, Integer> noteNameCounts = new LinkedHashMap<MusicalData.NoteName, Integer>();
 	private LinkedHashMap<MusicalData.ScaleDegree, Integer> scaleDegreeCounts = new LinkedHashMap<MusicalData.ScaleDegree, Integer>();
@@ -30,12 +31,12 @@ public class NeuralNetworkDataManager
 	
 	private Piece piece;
 	
-	public NeuralNetworkDataManager(Piece piece)
+	public MusicDataManager(Piece piece)
 	{
 		this.piece = piece;
 	}
 	
-	public NeuralNetworkDataManager()
+	public MusicDataManager()
 	{
 		for (NoteName noteName: MusicalData.NoteName.values())
 			noteNameCounts.put(noteName, 0);
@@ -222,7 +223,7 @@ public class NeuralNetworkDataManager
 		
 		try 
 		{
-			Files.write(Paths.get("results" + File.separator + "vectorsMusic.csv"), vectorStringBuilder.toString().getBytes(), StandardOpenOption.APPEND);
+			Files.write(Paths.get(PropertyManager.getResultFolderMusic() + "vectorsMusic.csv"), vectorStringBuilder.toString().getBytes(), StandardOpenOption.APPEND);
 		} 
 		catch (IOException e) {	e.printStackTrace();	}
 	}
@@ -324,7 +325,7 @@ public class NeuralNetworkDataManager
 
 		try 
 		{
-			Files.write(Paths.get("results" + File.separator + "vectorsMusic.csv"), vectorStringBuilder.toString().getBytes(), StandardOpenOption.APPEND);
+			Files.write(Paths.get(PropertyManager.getResultFolderMusic() + "vectorsMusic.csv"), vectorStringBuilder.toString().getBytes(), StandardOpenOption.APPEND);
 		} 
 		catch (IOException e) {	e.printStackTrace();	}	
 	}

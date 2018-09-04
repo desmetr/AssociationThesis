@@ -11,7 +11,7 @@ import utilities.GeneralData;
 import utilities.PropertyManager;
 import utilities.Utilities;;
 
-public class NeuralNetworkDataManager 
+public class GraphicsDataManager 
 {
 	private int numberOfFullLines = 0;
 	private int numberOfVerticalLines = 0;
@@ -58,7 +58,7 @@ public class NeuralNetworkDataManager
 		this.numberOfFullLines = numberOfVerticalLines + numberOfHorizontalLines + numberOfDiagonalUpLines + numberOfDiagonalDownLines;
 	}
 	
-	public NeuralNetworkDataManager()
+	public GraphicsDataManager()
 	{
 		for (int i = 3; i <= GeneralData.circleThreshold; i++)
 			polygonCounts.put(i, 0);
@@ -145,7 +145,7 @@ public class NeuralNetworkDataManager
 		
 		try 
 		{
-			Files.write(Paths.get(PropertyManager.getResultFolderGraphics() + "vectorsGraphics.csv"), vectorStringBuilder.toString().getBytes(), StandardOpenOption.APPEND);
+			Files.write(Paths.get(PropertyManager.getMainFolderGraphics() + "vectorsGraphics.csv"), vectorStringBuilder.toString().getBytes(), StandardOpenOption.APPEND);
 		} 
 		catch (IOException e) {	e.printStackTrace();	}
 	}
@@ -206,7 +206,7 @@ public class NeuralNetworkDataManager
 
 		try 
 		{
-			Files.write(Paths.get("results" + File.separator + "vectorsGraphics.csv"), vectorStringBuilder.toString().getBytes(), StandardOpenOption.APPEND);
+			Files.write(Paths.get(PropertyManager.getMainFolderGraphics() + "vectorsGraphics.csv"), vectorStringBuilder.toString().getBytes(), StandardOpenOption.APPEND);
 		} 
 		catch (IOException e) {	e.printStackTrace();	}
 	}	

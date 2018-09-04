@@ -88,11 +88,12 @@ public class AssociationManager
 		model.fit(trainingData);
 		return "";
 		
-		Evaluation eval = new Evaluation(3);
-		INDArray output = model.output(testData.getFeatureMatrix());
-		eval.eval(testData.getLabels(), output);
-		
-		 //Print the evaluation statistics
-		return eval.stats();	
+		// TODO evaluation ding
+//		Evaluation eval = new Evaluation(3);
+//		INDArray output = model.output(testData.getFeatureMatrix());
+//		eval.eval(testData.getLabels(), output);
+//		
+//		 //Print the evaluation statistics
+//		return eval.stats();	
 	}
 }

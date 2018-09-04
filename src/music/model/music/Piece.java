@@ -134,7 +134,7 @@ public class Piece
 		beatsPerMinute = 0;
 	}
 	
-	public void calculateStatistics(NeuralNetworkDataManager vectorManager)
+	public void calculateStatistics(MusicDataManager vectorManager)
 	{		
 		for (Measure measure : this.measures) 
 		{

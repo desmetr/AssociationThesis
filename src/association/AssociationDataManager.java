@@ -18,7 +18,7 @@ import utilities.GeneralData;
 import utilities.PropertyManager;
 import utilities.Utilities;
 
-public class DataManager 
+public class AssociationDataManager 
 {	
 	private List<EntropyTriplet> graphicsEntropy = new ArrayList<EntropyTriplet>();
 	private List<EntropyTriplet> musicEntropy = new ArrayList<EntropyTriplet>();
@@ -29,14 +29,14 @@ public class DataManager
 	public List<String> getGraphicsData() 	{	return graphicsData;	}
 	public List<String> getMusicData() 		{	return musicData;		}
 
-	public DataManager()
+	public AssociationDataManager()
 	{
 	}
 	
 	public String processImagesData() 
 	{		
 		// Specify the root directory.
-		String baseDir = PropertyManager.getSourceFolderGraphics();
+		String baseDir = PropertyManager.getMainFolderGraphics();
 		String inputPath = baseDir + "vectorsGraphics.csv";
 		
 		// Read data file
@@ -77,7 +77,7 @@ public class DataManager
 	public String processMusicData() 
 	{		
 		// Specify the root directory.
-		String baseDir = PropertyManager.getSourceFolderMusic();
+		String baseDir = PropertyManager.getResultFolderMusic();
 		String inputPath = baseDir + "vectorsMusic.csv";
 		
 		// Read data file

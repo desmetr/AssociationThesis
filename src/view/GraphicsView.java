@@ -6,10 +6,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import graphics.model.data.NeuralNetworkDataManager;
+import graphics.model.data.GraphicsDataManager;
 import graphics.model.parser.GraphicsParser;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
@@ -63,30 +60,21 @@ public class GraphicsView
 	private BufferedImage originalImage;
 	private GraphicsParser graphicsParser;
 	
-	private NeuralNetworkDataManager dataManager;
-	
-	private static final Logger logger = LoggerFactory.getLogger("Main");
+	private GraphicsDataManager dataManager;
 	
 	@FXML 
 	public void initialize()
 	{
-		dataManager = new NeuralNetworkDataManager();
+		dataManager = new GraphicsDataManager();
 		graphicsParser = new GraphicsParser(dataManager);
 		dataManager.writeLabelsToFile();
 	}
-	
+		
 	@FXML
 	public void onParseAllPaintingsClicked()
 	{
-		parseAllPaintingsInFolder(PropertyManager.getTestDataFolderGraphics());
+		parseAllPaintingsInFolder(PropertyManager.getTestFolderGraphics());
 		System.out.println("Parsed all test paintings.");
-
-		parseAllPaintingsInFolder(PropertyManager.getMondriaanFolderGraphics());
-		System.out.println("Mondriaan paintings done.");
-		parseAllPaintingsInFolder(PropertyManager.getPicassoFolderGraphics());
-		System.out.println("Picasso paintings done.");
-		parseAllPaintingsInFolder(PropertyManager.getRubensFolderGraphics());
-		System.out.println("Rubens paintings done.");
 	}
 	
 	private void parseAllPaintingsInFolder(String folder)
@@ -95,6 +83,9 @@ public class GraphicsView
 		{
 			File dir = new File(folder);
 			File[] directoryListing = dir.listFiles();
+			
+			dataManager.writeLabelsToFile();
+			
 			if (directoryListing != null) 
 			{
 				for (File selectedFile : directoryListing) 
@@ -116,7 +107,7 @@ public class GraphicsView
 		try 
 		{
 			FileChooser fileChooser = new FileChooser();
-			fileChooser.setInitialDirectory(new File(PropertyManager.getSourceFolderGraphics()));
+			fileChooser.setInitialDirectory(new File(PropertyManager.getMainFolderGraphics()));
 			fileChooser.setTitle("Open Resource File");
 			fileChooser.getExtensionFilters().addAll(new ExtensionFilter("Image Files", "*.jpg", "*.jpeg", "*.bmp", "*.png"));
 			File selectedFile = fileChooser.showOpenDialog(GeneralData.primaryStage);
@@ -143,6 +134,7 @@ public class GraphicsView
 				
 				originalImage = ImageIO.read(selectedFile);
 				graphicsParser.parseImage(originalImage);
+				dataManager.writeLabelsToFile();
 				dataManager.writeValuesToFile();
 				dataManager.reset();
 				

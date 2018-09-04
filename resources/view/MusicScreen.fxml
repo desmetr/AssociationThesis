@@ -14,21 +14,24 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 
 <BorderPane xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MusicView">
    <center>
-      <VBox alignment="CENTER" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_CENTER" BorderPane.alignment="TOP_CENTER">
          <children>
-            <TilePane prefHeight="77.0" prefWidth="900.0">
+            <TilePane alignment="TOP_CENTER" prefHeight="77.0" prefWidth="900.0" tileAlignment="TOP_CENTER" vgap="20.0">
                <children>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="450.0" spacing="20.0">
+                  <HBox alignment="CENTER" prefHeight="101.0" prefWidth="682.0" spacing="40.0">
                      <children>
-                        <Label fx:id="chosenFileLabel" text="Chosen File:" />
-                        <Label fx:id="nameOfChosenFile" text="No File Chosen" />
-                        <Button fx:id="newFileButton" mnemonicParsing="false" onAction="#onNewFileButtonClicked" text="Parse New File" />
+                        <Label fx:id="chosenFileLabel" prefHeight="16.0" prefWidth="91.0" text="Chosen File:" />
+                        <Label fx:id="nameOfChosenFile" prefHeight="16.0" prefWidth="106.0" text="No File Chosen" />
+                        <Button fx:id="newFileButton" mnemonicParsing="false" onAction="#onNewFileButtonClicked" text="Parse New Score" />
+                        <Button fx:id="parseTestScoresButton" mnemonicParsing="false" onAction="#onParseAllTestScoresClicked" text="Parse Test Scores" />
+                        <Line endX="100.0" startX="100.0" startY="100.0" />
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="450.0" spacing="40.0">
+                  <HBox alignment="CENTER" prefHeight="101.0" prefWidth="569.0" spacing="40.0">
                      <children>
                         <Button fx:id="augmentationButton" mnemonicParsing="false" onAction="#onAugmentationClicked" text="Augmentation" />
                         <TextField fx:id="augmentationTextField" />

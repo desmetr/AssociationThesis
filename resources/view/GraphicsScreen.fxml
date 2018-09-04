@@ -15,7 +15,7 @@
    <center>
       <VBox alignment="TOP_CENTER" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+            <HBox alignment="CENTER" prefHeight="101.0" prefWidth="916.0" spacing="20.0">
                <children>
                   <Label fx:id="chosenFileLabel" text="Chosen File:" />
                   <Label fx:id="nameOfChosenFile" text="No File Chosen" />
