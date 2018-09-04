@@ -1,6 +1,5 @@
-package music.model.music;
+package music.model.data;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -10,11 +9,11 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import music.model.music.MusicalData.Dynamics;
-import music.model.music.MusicalData.NoteInterval;
-import music.model.music.MusicalData.NoteLength;
-import music.model.music.MusicalData.NoteName;
-import music.model.music.MusicalData.ScaleDegree;
+import music.model.data.MusicalData.Dynamics;
+import music.model.data.MusicalData.NoteInterval;
+import music.model.data.MusicalData.NoteLength;
+import music.model.data.MusicalData.NoteName;
+import music.model.data.MusicalData.ScaleDegree;
 
 import java.util.Set;
 
@@ -31,6 +30,16 @@ public class MusicDataManager
 	
 	private Piece piece;
 	
+	public LinkedHashMap<MusicalData.NoteName, Integer> getNoteNameCounts() 		{	return noteNameCounts;		}
+	public LinkedHashMap<MusicalData.ScaleDegree, Integer> getScaleDegreeCounts() 	{	return scaleDegreeCounts;	}
+	public LinkedHashMap<MusicalData.NoteLength, Integer> getNoteLengthCounts()	 	{	return noteLengthCounts;	}
+	public LinkedHashMap<MusicalData.Dynamics, Integer> getDynamicsCounts() 		{	return dynamicsCounts;		}
+	public LinkedHashMap<MusicalData.NoteInterval, Integer> getIntervalCounts() 	{	return intervalCounts;		}
+
+	public Piece getPiece() {
+		return piece;
+	}
+
 	public MusicDataManager(Piece piece)
 	{
 		this.piece = piece;
@@ -228,6 +237,7 @@ public class MusicDataManager
 		catch (IOException e) {	e.printStackTrace();	}
 	}
 	
+	@SuppressWarnings("unchecked")
 	public void writeValuesToFile()
 	{
 		this.piece.calculateStatistics(this);

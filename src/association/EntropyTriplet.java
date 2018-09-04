@@ -1,6 +1,6 @@
 package association;
 
-public class EntropyTriplet implements Comparable
+public class EntropyTriplet implements Comparable<Object>
 {
 	private String name;
 	private Double entropy;

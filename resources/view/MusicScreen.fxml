@@ -4,6 +4,7 @@
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Tab?>
@@ -35,6 +36,8 @@
                      <children>
                         <Button fx:id="augmentationButton" mnemonicParsing="false" onAction="#onAugmentationClicked" text="Augmentation" />
                         <TextField fx:id="augmentationTextField" />
+                        <Line endX="100.0" startX="100.0" startY="100.0" />
+                        <CheckBox fx:id="musicVerboseCheckBox" mnemonicParsing="false" onAction="#onMusicVerboseCheckBoxClicked" text="Verbose" />
                      </children>
                   </HBox>
                </children>

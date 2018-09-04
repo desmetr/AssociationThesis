@@ -4,7 +4,7 @@ import application.Main;
 import javafx.fxml.FXML;
 import utilities.GeneralData.ScreenType;
 
-public class MainView 
+public class MainView
 {
 	@FXML 
 	public void initialize()

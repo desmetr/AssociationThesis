@@ -1,7 +1,7 @@
-package music.model.music;
+package music.model.data;
 
-import music.model.music.MusicalData.NoteName;
-import music.model.music.MusicalData.Scale;
+import music.model.data.MusicalData.NoteName;
+import music.model.data.MusicalData.Scale;
 
 /*
  * Class that holds the information of the key of a piece.

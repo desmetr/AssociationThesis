@@ -1,4 +1,4 @@
-package music.model.music;
+package music.model.data;
 
 import java.util.ArrayList;
 import java.util.Arrays;

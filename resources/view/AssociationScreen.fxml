@@ -34,7 +34,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <CheckBox fx:id="verboseCheckBox" mnemonicParsing="false" onAction="#onVerboseCheckBoxClicked" text="Verbose" GridPane.columnIndex="4" />
+            <CheckBox fx:id="associationVerboseCheckBox" mnemonicParsing="false" onAction="#onAssociationVerboseCheckBoxClicked" text="Verbose" GridPane.columnIndex="4" />
             <Button fx:id="processImagesButton" mnemonicParsing="false" onAction="#onProcessImagesButtonClicked" text="Process Images" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Button fx:id="processMusicButton" mnemonicParsing="false" onAction="#onProcessMusicButtonClicked" text="Process Music" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             <Button fx:id="rankButton" mnemonicParsing="false" onAction="#onRankButtonClicked" text="Rank" GridPane.columnIndex="3" GridPane.rowIndex="1" />

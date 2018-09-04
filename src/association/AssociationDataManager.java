@@ -60,7 +60,7 @@ public class AssociationDataManager
 	    	String[] inputDataStringArrayNoName = Arrays.copyOf(inputDataStringArray, inputDataStringArray.length - 1);
 	    	currentImageEntropy = Double.valueOf(inputDataStringArray[19]);
 	    	
-	    	if (GeneralData.verbose)
+	    	if (GeneralData.associationVerbose)
 	    		resultText += "--- Entropy of " + currentImageName + ": " + currentImageEntropy + "\n";
 	    
 	    	graphicsEntropy.add(new EntropyTriplet(currentImageName, currentImageEntropy, i - 1));	// Index - 1 because we ignore the first line with labels.
@@ -110,7 +110,7 @@ public class AssociationDataManager
 	        System.arraycopy(inputNoteIntervals, 0, entropyArray, inputNoteNames.length + inputNoteRoles.length, inputNoteIntervals.length);
 	        
 	        currentSongEntropy = calculateEntropy(entropyArray);
-	        if (GeneralData.verbose)
+	        if (GeneralData.associationVerbose)
 	        	resultText += "--- Entropy of " + currentSongName + ": " + currentSongEntropy + "\n";
 	        
 	        musicEntropy.add(new EntropyTriplet(currentSongName, currentSongEntropy, i - 1));	// Index - 1 because we ignore the first line with labels.
@@ -122,14 +122,13 @@ public class AssociationDataManager
         return resultText;
 	}
 	
-	@SuppressWarnings("unchecked")
 	public String rank()
 	{
 		String resultText = "";
 		
 		Collections.sort(musicEntropy);
 		
-		if (GeneralData.verbose)
+		if (GeneralData.associationVerbose)
 		{
 			resultText += "\n--- Sorted Music:\n";
 			for (EntropyTriplet entry : musicEntropy) 
@@ -138,7 +137,7 @@ public class AssociationDataManager
 		
 		Collections.sort(graphicsEntropy);
 		
-		if (GeneralData.verbose)
+		if (GeneralData.associationVerbose)
 		{
 			resultText += "\n--- Sorted Graphics:\n";
 			for (EntropyTriplet entry : graphicsEntropy) 

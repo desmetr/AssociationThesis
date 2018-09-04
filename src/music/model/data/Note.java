@@ -1,7 +1,7 @@
-package music.model.music;
+package music.model.data;
 
-import music.model.music.MusicalData.NoteLength;
-import music.model.music.MusicalData.NoteName;
+import music.model.data.MusicalData.NoteLength;
+import music.model.data.MusicalData.NoteName;
 
 /*
  * Class that holds all the information of a single note.

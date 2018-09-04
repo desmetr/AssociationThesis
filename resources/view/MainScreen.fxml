@@ -12,15 +12,18 @@
           <Menu fx:id="graphicsMenu" mnemonicParsing="true" text="Graphics">
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#onShowParserGraphics" text="Show Parser" />
-               </items></Menu>
+               </items>
+            </Menu>
           <Menu fx:id="musicMenu" mnemonicParsing="true" text="Music">
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#onShowParserMusic" text="Show Parser" />
-               </items></Menu>
+               </items>
+            </Menu>
           <Menu fx:id="associationMenu" mnemonicParsing="true" text="Association">
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#onShowActionsAssociation" text="Show Actions" />
-               </items></Menu>
+               </items>
+            </Menu>
         </menus>
       </MenuBar>
    </top>

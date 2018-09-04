@@ -1,14 +1,16 @@
-package music.model.music;
+package music.model.data;
 
 import java.util.ArrayList;
 
-import music.model.music.MusicalData.Clef;
-import music.model.music.MusicalData.Dynamics;
-import music.model.music.MusicalData.NoteInterval;
-import music.model.music.MusicalData.NoteLength;
-import music.model.music.MusicalData.NoteName;
-import music.model.music.MusicalData.ScaleDegree;
-import music.model.music.MusicalData.TimeSignatureEnum;
+import com.google.common.annotations.VisibleForTesting;
+
+import music.model.data.MusicalData.Clef;
+import music.model.data.MusicalData.Dynamics;
+import music.model.data.MusicalData.NoteInterval;
+import music.model.data.MusicalData.NoteLength;
+import music.model.data.MusicalData.NoteName;
+import music.model.data.MusicalData.ScaleDegree;
+import music.model.data.MusicalData.TimeSignatureEnum;
 import utilities.Utilities;
 
 public class Piece 
@@ -101,6 +103,11 @@ public class Piece
 	public String getClefAsString()					{	return clef.toString(); 								  }
 	public TimeSignatureEnum getTimeSignature()		{   return measures.get(0).timeSignature.timeSignatureAsEnum; }
 	
+	public Piece()
+	{
+		
+	}
+	
 	public Piece(String fileName)
 	{
 		name = fileName;
@@ -181,7 +188,6 @@ public class Piece
 			int indexPreviousNote = MusicalData.notes.indexOf(previousNote.name); 
 			int indexCurrentNote = MusicalData.notes.indexOf(currentNote.name);
 			
-//			System.out.println(previousNote.name + "" + previousNote.pitch + " " +indexPreviousNote + ", " + currentNote.name + currentNote.pitch + " " + indexCurrentNote + " = " + GeneralData.mod(indexCurrentNote - indexPreviousNote, 12));
 			int intervalLength = Utilities.mod(indexCurrentNote - indexPreviousNote, 12);
 			if (intervalLength == 0 && previousNote.pitch == currentNote.pitch)
 				interval = MusicalData.NoteInterval.PERFECT_UNISON;
@@ -198,6 +204,7 @@ public class Piece
 		totalNumberOfTies = numberOfMiddleOfTies + numberOfEndOfTies;
 	}
 	
+	@VisibleForTesting
 	private NoteInterval getNoteInterval(int intervalLength)
 	{
 		switch (intervalLength)

@@ -1,8 +1,8 @@
-package music.model.music;
+package music.model.data;
 
 import java.util.Objects;
 
-import music.model.music.MusicalData.TimeSignatureEnum;
+import music.model.data.MusicalData.TimeSignatureEnum;
 
 public class TimeSignature 
 {

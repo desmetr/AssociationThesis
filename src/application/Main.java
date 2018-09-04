@@ -9,7 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import music.model.music.MusicalData;
+import music.model.data.MusicalData;
 import utilities.GeneralData;
 import utilities.GeneralData.ScreenType;
 import utilities.PropertyManager;

@@ -7,15 +7,16 @@ import java.io.File;
 
 import org.junit.jupiter.api.Test;
 
-import music.model.music.Key;
-import music.model.music.Measure;
-import music.model.music.MusicalData;
-import music.model.music.MusicalData.Clef;
-import music.model.music.MusicalData.NoteLength;
-import music.model.music.MusicalData.NoteName;
-import music.model.music.MusicalData.Scale;
-import music.model.music.Note;
-import music.model.music.Piece;
+import music.model.data.Key;
+import music.model.data.Measure;
+import music.model.data.MusicalData;
+import music.model.data.Note;
+import music.model.data.Piece;
+import music.model.data.MusicalData.Clef;
+import music.model.data.MusicalData.NoteLength;
+import music.model.data.MusicalData.NoteName;
+import music.model.data.MusicalData.Scale;
+import music.model.data.MusicalData.TimeSignatureEnum;
 import music.model.parser.MusicXMLParser;
 import utilities.GeneralData;
 import utilities.PropertyManager;
@@ -29,7 +30,7 @@ class MusicXMLParserTestCase
 	private String testXMLDestinationPath;
 	private String testFailXMLDestinationPath;
 	
-	// Score 2.xml //
+	
 	
 	public MusicXMLParserTestCase() 
 	{
@@ -37,14 +38,16 @@ class MusicXMLParserTestCase
 		testXMLDestinationPath = PropertyManager.getDestinationFolderMusic();
 		testFailXMLDestinationPath = PropertyManager.getFailDestinationFolderMusic();
 	}
-
+	
+	// Score 2.xml //
+	
 	@Test
-	public void testScore_2_Piece()
+	public void score2_Piece()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 2.xml");
@@ -59,17 +62,18 @@ class MusicXMLParserTestCase
 			assertEquals(150, piece.beatsPerMinute);
 			assertEquals(Clef.TREBLE, piece.clef);
 			assertEquals("TREBLE", piece.getClefAsString());
+			assertEquals(TimeSignatureEnum.FOUR_FOUR, piece.getTimeSignature());
 		} 
 		catch (Exception e) {	e.printStackTrace();	}
 	}
 	
 	@Test
-	public void testScore_2_Key()
+	public void score2_Key()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 2.xml");
@@ -83,12 +87,12 @@ class MusicXMLParserTestCase
 	}
 
 	@Test
-	public void testScore_2_Measure1()
+	public void score2_Measure1()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 2.xml");
@@ -104,12 +108,12 @@ class MusicXMLParserTestCase
 	}
 	
 	@Test
-	public void testScore_2_Measure2()
+	public void score2_Measure2()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 2.xml");
@@ -125,12 +129,12 @@ class MusicXMLParserTestCase
 	}
 	
 	@Test
-	public void testScore_2_Note1_Measure1()
+	public void score2_Note1_Measure1()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 2.xml");
@@ -151,12 +155,12 @@ class MusicXMLParserTestCase
 	}
 	
 	@Test
-	public void testScore_2_Note2_Measure1()
+	public void score2_Note2_Measure1()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 2.xml");
@@ -177,12 +181,12 @@ class MusicXMLParserTestCase
 	}
 	
 	@Test
-	public void testScore_2_Note3_Measure1()
+	public void score2_Note3_Measure1()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 2.xml");
@@ -203,12 +207,12 @@ class MusicXMLParserTestCase
 	}
 	
 	@Test
-	public void testScore_2_Note4_Measure1()
+	public void score2_Note4_Measure1()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 2.xml");
@@ -229,12 +233,12 @@ class MusicXMLParserTestCase
 	}
 	
 	@Test
-	public void testScore_2_Note5_Measure1()
+	public void score2_Note5_Measure1()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 2.xml");
@@ -255,12 +259,12 @@ class MusicXMLParserTestCase
 	}
 	
 	@Test
-	public void testScore_2_Note6_Measure1()
+	public void score2_Note6_Measure1()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 2.xml");
@@ -280,12 +284,12 @@ class MusicXMLParserTestCase
 	}
 	
 	@Test
-	public void testScore_2_Note1_Measure2()
+	public void score2_Note1_Measure2()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 2.xml");
@@ -306,12 +310,12 @@ class MusicXMLParserTestCase
 	}
 	
 	@Test
-	public void testScore_2_Note2_Measure2()
+	public void score2_Note2_Measure2()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 2.xml");
@@ -332,12 +336,12 @@ class MusicXMLParserTestCase
 	}
 	
 	@Test
-	public void testScore_2_Note3_Measure2()
+	public void score2_Note3_Measure2()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 2.xml");
@@ -358,12 +362,12 @@ class MusicXMLParserTestCase
 	}
 	
 	@Test
-	public void testScore_2_Note4_Measure2()
+	public void score2_Note4_Measure2()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 2.xml");
@@ -384,12 +388,12 @@ class MusicXMLParserTestCase
 	}
 	
 	@Test
-	public void testScore_2_Note5_Measure2()
+	public void score2_Note5_Measure2()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 2.xml");
@@ -410,12 +414,12 @@ class MusicXMLParserTestCase
 	}
 	
 	@Test
-	public void testScore_2_Note6_Measure2()
+	public void score2_Note6_Measure2()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 2.xml");
@@ -436,12 +440,12 @@ class MusicXMLParserTestCase
 	}
 	
 	@Test
-	public void testScore_2_Note7_Measure2()
+	public void score2_Note7_Measure2()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 2.xml");
@@ -462,12 +466,12 @@ class MusicXMLParserTestCase
 	}
 	
 	@Test
-	public void testScore_2_Note8_Measure2()
+	public void score2_Note8_Measure2()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 2.xml");
@@ -490,12 +494,12 @@ class MusicXMLParserTestCase
 	// Score 3.xml and derivatives //
 	
 	@Test
-	public void testScore_3_Note1_Measure_4()
+	public void score3_Note1_Measure_4()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 3.xml");
@@ -517,12 +521,12 @@ class MusicXMLParserTestCase
 	}
 	
 	@Test
-	public void testScore_3_WholeNotesTiedToQuarterNotes_Begin()
+	public void score3_WholeNotesTiedToQuarterNotes_Begin()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 3.xml");
@@ -543,12 +547,12 @@ class MusicXMLParserTestCase
 	}
 	
 	@Test
-	public void testScore_3_WholeNotesTiedToQuarterNotes_End()
+	public void score3_WholeNotesTiedToQuarterNotes_End()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 3.xml");
@@ -571,12 +575,12 @@ class MusicXMLParserTestCase
 	}
 	
 	@Test
-	public void testScore_3()
+	public void score3_Piece()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 3.xml");
@@ -591,17 +595,18 @@ class MusicXMLParserTestCase
 			assertEquals(120, piece.beatsPerMinute);
 			assertEquals(Clef.TREBLE, piece.clef);
 			assertEquals("TREBLE", piece.getClefAsString());
+			assertEquals(TimeSignatureEnum.FOUR_FOUR, piece.getTimeSignature());
 		} 
 		catch (Exception e) {	e.printStackTrace();	}
 	}
 	
 	@Test
-	public void testScore_3_Anacrusis_2()
+	public void score3_Anacrusis_2()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testFailXMLDestinationPath + "Score 3_Anacrusis_2.xml");
@@ -613,12 +618,12 @@ class MusicXMLParserTestCase
 	}
 	
 	@Test
-	public void testScore_3_Anacrusis_3()
+	public void score3_Anacrusis_3()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testFailXMLDestinationPath + "Score 3_Anacrusis_3.xml");
@@ -630,12 +635,12 @@ class MusicXMLParserTestCase
 	}
 	
 	@Test
-	public void testScore_3_Anacrusis_4()
+	public void score3_Anacrusis_4()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testFailXMLDestinationPath + "Score 3_Anacrusis_4.xml");
@@ -649,12 +654,12 @@ class MusicXMLParserTestCase
 	// Score 4.xml //
 	
 	@Test
-	public void testScore_4_Piece()
+	public void score4_Piece()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 4.xml");
@@ -669,17 +674,18 @@ class MusicXMLParserTestCase
 			assertEquals(120, piece.beatsPerMinute);
 			assertEquals(Clef.TREBLE, piece.clef);
 			assertEquals("TREBLE", piece.getClefAsString());
+			assertEquals(TimeSignatureEnum.FOUR_FOUR, piece.getTimeSignature());
 		} 
 		catch (Exception e) {	e.printStackTrace();	}
 	}
 	
 	@Test
-	public void testScore_4_Key()
+	public void score4_Key()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 4.xml");
@@ -693,12 +699,12 @@ class MusicXMLParserTestCase
 	}
 	
 	@Test
-	public void testScore_4_TripletEighth()
+	public void score4_TripletEighth()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 4.xml");
@@ -721,12 +727,12 @@ class MusicXMLParserTestCase
 	}
 	
 	@Test
-	public void testScore_4_TripletQuarter()
+	public void score4_TripletQuarter()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 4.xml");
@@ -749,12 +755,12 @@ class MusicXMLParserTestCase
 	}
 	
 	@Test
-	public void testScore_4_TripletSixteenth()
+	public void score4_TripletSixteenth()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 4.xml");
@@ -777,12 +783,12 @@ class MusicXMLParserTestCase
 	}
 	
 	@Test
-	public void testScore_4_TripletHalf()
+	public void score4_TripletHalf()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 4.xml");
@@ -807,12 +813,12 @@ class MusicXMLParserTestCase
 	// Score 5.xml // 
 	
 	@Test
-	public void testScore_5_Piece()
+	public void score5_Piece()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 5.xml");
@@ -827,17 +833,18 @@ class MusicXMLParserTestCase
 			assertEquals(120, piece.beatsPerMinute);
 			assertEquals(Clef.BASS, piece.clef);
 			assertEquals("BASS", piece.getClefAsString());
+			assertEquals(TimeSignatureEnum.FOUR_FOUR, piece.getTimeSignature());
 		} 
 		catch (Exception e) {	e.printStackTrace();	}
 	}
 	
 	@Test
-	public void testScore_5_Key()
+	public void score5_Key()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 5.xml");
@@ -851,12 +858,12 @@ class MusicXMLParserTestCase
 	}
 	
 	@Test
-	public void testScore_5_TieInMeasure1()
+	public void score5_TieInMeasure1()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 5.xml");
@@ -877,12 +884,12 @@ class MusicXMLParserTestCase
 	}
 	
 	@Test
-	public void testScore_5_TieInMeasure2()
+	public void score5_TieInMeasure2()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 5.xml");
@@ -905,12 +912,12 @@ class MusicXMLParserTestCase
 	// Score 6.xml //
 	
 	@Test
-	public void testScore_6_Note1_Measure1()
+	public void score6_Note1_Measure1()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 6.xml");
@@ -932,12 +939,12 @@ class MusicXMLParserTestCase
 	}
 	
 	@Test
-	public void testScore_6_Note2_Measure1()
+	public void score6_Note2_Measure1()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 6.xml");
@@ -958,12 +965,12 @@ class MusicXMLParserTestCase
 	}
 	
 	@Test
-	public void testScore_6_Note1_Measure2()
+	public void score6_Note1_Measure2()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 6.xml");
@@ -985,12 +992,12 @@ class MusicXMLParserTestCase
 	}
 	
 	@Test
-	public void testScore_6_Note2_Measure2()
+	public void score6_Note2_Measure2()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 6.xml");
@@ -1014,12 +1021,12 @@ class MusicXMLParserTestCase
 	// Score 7.xml //
 	
 	@Test
-	public void testScore_7_Piece()
+	public void score7_Piece()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 7.xml");
@@ -1034,17 +1041,18 @@ class MusicXMLParserTestCase
 			assertEquals(120, piece.beatsPerMinute);
 			assertEquals(Clef.TREBLE, piece.clef);
 			assertEquals("TREBLE", piece.getClefAsString());
+			assertEquals(TimeSignatureEnum.FOUR_FOUR, piece.getTimeSignature());
 		} 
 		catch (Exception e) {	e.printStackTrace();	}
 	}
 	
 	@Test
-	public void testScore_7_Key()
+	public void score7_Key()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 7.xml");
@@ -1058,12 +1066,12 @@ class MusicXMLParserTestCase
 	}
 	
 	@Test
-	public void testScore_7_Measure1()
+	public void score7_Measure1()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 7.xml");
@@ -1079,12 +1087,12 @@ class MusicXMLParserTestCase
 	}
 	
 	@Test
-	public void testScore_7_Note1_Measure1()
+	public void score7_Note1_Measure1()
 	{
 		try
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 7.xml");
@@ -1106,15 +1114,13 @@ class MusicXMLParserTestCase
 	
 	// Score 8.xml //
 	
-	// Test9.xml //
-	
 	@Test
-	public void testScore_8_EightTiedToHalf()
+	public void score8_EightTiedToHalf()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 8.xml");
@@ -1135,12 +1141,12 @@ class MusicXMLParserTestCase
 	}
 		
 	@Test
-	public void testScore_8_SixteenthTiedToSixteenth()
+	public void score8_SixteenthTiedToSixteenth()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 8.xml");
@@ -1162,12 +1168,12 @@ class MusicXMLParserTestCase
 	}
 		
 	@Test
-	public void testScore_8_SixteenthTiedToEighth()
+	public void score8_SixteenthTiedToEighth()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 8.xml");
@@ -1188,12 +1194,12 @@ class MusicXMLParserTestCase
 	}
 		
 	@Test
-	public void testScore_8_SixteenthTiedToQuarter()
+	public void score8_SixteenthTiedToQuarter()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 8.xml");
@@ -1214,12 +1220,12 @@ class MusicXMLParserTestCase
 	}
 		
 	@Test
-	public void testScore_8_SixteenthTiedToHalf()
+	public void score8_SixteenthTiedToHalf()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 8.xml");
@@ -1242,12 +1248,12 @@ class MusicXMLParserTestCase
 	// Score 9.xml //
 	
 	@Test
-	public void testScore_9_QuarterTiedToSixteenth()
+	public void score9_QuarterTiedToSixteenth()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 9.xml");
@@ -1269,12 +1275,12 @@ class MusicXMLParserTestCase
 	}
 	
 	@Test
-	public void testScore_9_QuarterTiedToEighth()
+	public void score9_QuarterTiedToEighth()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 9.xml");
@@ -1295,12 +1301,12 @@ class MusicXMLParserTestCase
 	}
 	
 	@Test
-	public void testScore_9_QuarterTiedToQuarter()
+	public void score9_QuarterTiedToQuarter()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 9.xml");
@@ -1321,12 +1327,12 @@ class MusicXMLParserTestCase
 	}
 	
 	@Test
-	public void testScore_9_QuarterTiedToHalf()
+	public void score9_QuarterTiedToHalf()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 9.xml");
@@ -1353,12 +1359,12 @@ class MusicXMLParserTestCase
 	// Score 12.xml //
 	
 	@Test
-	public void testScore_12_HalfTiedToSixteenth()
+	public void score12_HalfTiedToSixteenth()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 12.xml");
@@ -1380,12 +1386,12 @@ class MusicXMLParserTestCase
 	}
 	
 	@Test
-	public void testScore_12_HalfTiedToEighth()
+	public void score12_HalfTiedToEighth()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 12.xml");
@@ -1406,12 +1412,12 @@ class MusicXMLParserTestCase
 	}
 	
 	@Test
-	public void testScore_12_HalfTiedToQuarter()
+	public void score12_HalfTiedToQuarter()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 12.xml");
@@ -1434,12 +1440,12 @@ class MusicXMLParserTestCase
 	// Score 13.xml //
 	
 	@Test
-	public void testScore_13_WholeTiedToSixteenth()
+	public void score13_WholeTiedToSixteenth()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 13.xml");
@@ -1462,12 +1468,12 @@ class MusicXMLParserTestCase
 	}
 	
 	@Test
-	public void testScore_13_WholeTiedToEighth()
+	public void score13_WholeTiedToEighth()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 13.xml");
@@ -1490,12 +1496,12 @@ class MusicXMLParserTestCase
 	}
 	
 	@Test
-	public void testScore_13_WholeTiedToHalf()
+	public void score13_WholeTiedToHalf()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 13.xml");
@@ -1518,12 +1524,12 @@ class MusicXMLParserTestCase
 	}
 	
 	@Test
-	public void testScore_13_WholeTiedToWhole()
+	public void score13_WholeTiedToWhole()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 13.xml");
@@ -1548,12 +1554,12 @@ class MusicXMLParserTestCase
 	// Score 14.xml //
 	
 	@Test
-	public void testScore_14_SixteenthRest()
+	public void score14_SixteenthRest()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 14.xml");
@@ -1569,12 +1575,12 @@ class MusicXMLParserTestCase
 	}
 	
 	@Test
-	public void testScore_14_EighthRest()
+	public void score14_EighthRest()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 14.xml");
@@ -1590,12 +1596,12 @@ class MusicXMLParserTestCase
 	}
 	
 	@Test
-	public void testScore_14_QuarterRest()
+	public void score14_QuarterRest()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 14.xml");
@@ -1611,12 +1617,12 @@ class MusicXMLParserTestCase
 	}
 	
 	@Test
-	public void testScore_14_HalfRest()
+	public void score14_HalfRest()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 14.xml");
@@ -1632,12 +1638,12 @@ class MusicXMLParserTestCase
 	}
 	
 	@Test
-	public void testScore_14_WholeRest()
+	public void score14_WholeRest()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 14.xml");
@@ -1655,12 +1661,12 @@ class MusicXMLParserTestCase
 	// Score 15.xml //
 	
 	@Test
-	public void testScore_15_TwoTiesOneMeasure()
+	public void score15_TwoTiesOneMeasure()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 15.xml");
@@ -1689,12 +1695,12 @@ class MusicXMLParserTestCase
 	// Score 16.xml //
 	
 	@Test
-	public void testScore_16_Piece()
+	public void score16_Piece()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 16.xml");
@@ -1709,17 +1715,18 @@ class MusicXMLParserTestCase
 			assertEquals(120, piece.beatsPerMinute);
 			assertEquals(Clef.TREBLE, piece.clef);
 			assertEquals("TREBLE", piece.getClefAsString());
+			assertEquals(TimeSignatureEnum.THREE_FOUR, piece.getTimeSignature());
 		} 
 		catch (Exception e) {	e.printStackTrace();	}
 	}
 	
 	@Test
-	public void testScore_16_Chord_Two_Notes_1()
+	public void score16_Chord_Two_Notes_1()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 16.xml");
@@ -1747,12 +1754,12 @@ class MusicXMLParserTestCase
 	}
 	
 	@Test
-	public void testScore_16_Chord_Two_Notes_2()
+	public void score16_Chord_Two_Notes_2()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 16.xml");
@@ -1782,12 +1789,12 @@ class MusicXMLParserTestCase
 	// Score 17.xml //
 	
 	@Test
-	public void testScore_17_Chord_Three_Notes()
+	public void score17_Chord_Three_Notes()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 17.xml");
@@ -1829,12 +1836,12 @@ class MusicXMLParserTestCase
 	// Score 18.xml //
 	
 	@Test
-	public void testScore_18_Piece()
+	public void score18_Piece()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 18.xml");
@@ -1849,17 +1856,18 @@ class MusicXMLParserTestCase
 			assertEquals(120, piece.beatsPerMinute);
 			assertEquals(Clef.BASS, piece.clef);
 			assertEquals("BASS", piece.getClefAsString());
+			assertEquals(TimeSignatureEnum.FOUR_FOUR, piece.getTimeSignature());
 		} 
 		catch (Exception e) {	e.printStackTrace();	}
 	}
 	
 	@Test
-	public void testScore_18_Key()
+	public void score18_Key()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 18.xml");
@@ -1873,12 +1881,12 @@ class MusicXMLParserTestCase
 	}
 	
 	@Test
-	public void testScore_18_Sixteenth_Dotted()
+	public void score18_Sixteenth_Dotted()
 	{
 		try
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 18.xml");
@@ -1894,12 +1902,12 @@ class MusicXMLParserTestCase
 	}
 	
 	@Test
-	public void testScore_18_Eighth_Dotted()
+	public void score18_Eighth_Dotted()
 	{
 		try
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 18.xml");
@@ -1912,12 +1920,12 @@ class MusicXMLParserTestCase
 	}
 	
 	@Test
-	public void testScore_18_Half_Dotted()
+	public void score18_Half_Dotted()
 	{
 		try
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 18.xml");
@@ -1932,12 +1940,12 @@ class MusicXMLParserTestCase
 	// Score 19.xml //
 	
 	@Test
-	public void testScore_19_Piece()
+	public void score19_Piece()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 19.xml");
@@ -1952,17 +1960,18 @@ class MusicXMLParserTestCase
 			assertEquals(120, piece.beatsPerMinute);
 			assertEquals(Clef.TREBLE, piece.clef);
 			assertEquals("TREBLE", piece.getClefAsString());
+			assertEquals(TimeSignatureEnum.FOUR_FOUR, piece.getTimeSignature());
 		} 
 		catch (Exception e) {	e.printStackTrace();	}
 	}
 		
 	@Test
-	public void testScore_19_Measure1()
+	public void score19_Measure1()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 19.xml");
@@ -1978,12 +1987,12 @@ class MusicXMLParserTestCase
 	}
 		
 	@Test
-	public void testScore_19_Measure2()
+	public void score19_Measure2()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 19.xml");
@@ -1999,12 +2008,12 @@ class MusicXMLParserTestCase
 	}
 		
 	@Test
-	public void testScore_19_WholeNote()
+	public void score19_WholeNote()
 	{
 		try 
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 19.xml");
@@ -2033,7 +2042,7 @@ class MusicXMLParserTestCase
 		try
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 2.xml");
@@ -2048,6 +2057,7 @@ class MusicXMLParserTestCase
 			assertEquals(null, piece.beatUnit);
 			assertEquals(0, piece.beatsPerMinute);
 			assertEquals(0, piece.getNumberOfMeasures());
+			
 		} 
 		catch (Exception e) {	e.printStackTrace();	}
 	}
@@ -2058,7 +2068,7 @@ class MusicXMLParserTestCase
 		try
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 2.xml");
@@ -2081,7 +2091,7 @@ class MusicXMLParserTestCase
 		try
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 2.xml");
@@ -2105,7 +2115,7 @@ class MusicXMLParserTestCase
 		try
 		{
 			MusicalData.initialize();
-			GeneralData.preprocessFiles();
+			GeneralData.preprocessMusicFiles();
 			
 			MusicXMLParser parser = new MusicXMLParser();
 			File file = new File(testXMLDestinationPath + "Score 2.xml");

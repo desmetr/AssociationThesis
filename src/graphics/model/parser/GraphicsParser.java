@@ -105,8 +105,6 @@ public class GraphicsParser
 	
 	private BufferedImage image;
 	
-	private HashMap<Integer, Double> pixelCounts = new HashMap<Integer, Double>();
-	
 	private final float Q1Begin = 0.0f;
 	private final float Q1End = 1.5707963f;
 	private final float Q2End = round(Math.PI);
@@ -791,12 +789,10 @@ public class GraphicsParser
 	    	for (int j = 0; j < actualImage.getWidth(); j++)
 	    	{
 	    		int pixel = actualImage.getRGB(j, i);
-	    		int alpha = (pixel >> 24) & 0xff;
 	            int red = (pixel >> 16) & 0xff;
 	            int green = (pixel >> 8) & 0xff;
 	            int blue = (pixel) & 0xff;
-	            //	0.2989 * R + 0.5870 * G + 0.1140 * B greyscale conversion
-	            //	System.out.println("i="+i+" j="+j+" argb: " + alpha + ", " + red + ", " + green + ", " + blue);
+
 	            int d = (int) Math.round(0.2989 * red + 0.5870 * green + 0.1140 * blue);
 	            if (!values.contains(String.valueOf(d)))
 	            	values.add(String.valueOf(d));
@@ -812,7 +808,6 @@ public class GraphicsParser
 	    double e = 0.0;
 	    for (Map.Entry<Integer, Integer> entry : occ.entrySet()) 
 	    {
-	    	int cx = entry.getKey();
 	        double p = (double) entry.getValue() / n;
 	        e += p * (Math.log(p) / Math.log(2));
 	    }

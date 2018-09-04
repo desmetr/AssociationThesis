@@ -1,8 +1,8 @@
-package music.model.music;
+package music.model.data;
 
 import java.util.ArrayList;
 
-import music.model.music.MusicalData.Dynamics;
+import music.model.data.MusicalData.Dynamics;
 
 /*
  * Class that holds the information of a measure.

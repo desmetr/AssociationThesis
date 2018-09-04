@@ -12,26 +12,27 @@ def executePipeline(p, n):
 	p.sample(n)
 
 n = int(sys.argv[1])
+print(n)
 
 if (sys.argv[2] == "test"):
 	pBruegel = Augmentor.Pipeline("/home/rafael/Dropbox/MasterInformatica/TweedeJaar/Onderzoeksproject2/GraphicsParser/src/main/resources/img/bruegelTest1",
-							output_directory="/home/rafael/DataOnderzoeksproject2/test")
+							output_directory="/home/rafael/DataOnderzoeksproject2/graphics/test_TEMP")
 	executePipeline(pBruegel, n)
 
 	pBruegel = Augmentor.Pipeline("/home/rafael/Dropbox/MasterInformatica/TweedeJaar/Onderzoeksproject2/GraphicsParser/src/main/resources/img/bruegelTest2",
-							output_directory="/home/rafael/DataOnderzoeksproject2/test")
+							output_directory="/home/rafael/DataOnderzoeksproject2/graphics/test_TEMP")
 	executePipeline(pBruegel, n)
 
 	pMondriaan = Augmentor.Pipeline("/home/rafael/Dropbox/MasterInformatica/TweedeJaar/Onderzoeksproject2/GraphicsParser/src/main/resources/img/mondriaanTest",
-							output_directory="/home/rafael/DataOnderzoeksproject2/test")
+							output_directory="/home/rafael/DataOnderzoeksproject2/graphics/test_TEMP")
 	executePipeline(pMondriaan, n)
 
 	pPicasso = Augmentor.Pipeline("/home/rafael/Dropbox/MasterInformatica/TweedeJaar/Onderzoeksproject2/GraphicsParser/src/main/resources/img/picassoTest",
-							output_directory="/home/rafael/DataOnderzoeksproject2/test")
+							output_directory="/home/rafael/DataOnderzoeksproject2/graphics/test_TEMP")
 	executePipeline(pPicasso, n)
 
 	pRubens = Augmentor.Pipeline("/home/rafael/Dropbox/MasterInformatica/TweedeJaar/Onderzoeksproject2/GraphicsParser/src/main/resources/img/rubensTest",
-							output_directory="/home/rafael/DataOnderzoeksproject2/test")
+							output_directory="/home/rafael/DataOnderzoeksproject2/graphics/test_TEMP")
 	executePipeline(pRubens, n)
 else:
 	pBruegel = Augmentor.Pipeline("/home/rafael/Dropbox/MasterInformatica/TweedeJaar/Onderzoeksproject2/GraphicsParser/src/main/resources/img/bruegel",

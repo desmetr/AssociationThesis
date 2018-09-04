@@ -8,17 +8,17 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.input.SAXBuilder;
 
-import music.model.music.Key;
-import music.model.music.Measure;
-import music.model.music.MusicalData;
-import music.model.music.Note;
-import music.model.music.Piece;
-import music.model.music.TimeSignature;
-import music.model.music.MusicalData.Clef;
-import music.model.music.MusicalData.Dynamics;
-import music.model.music.MusicalData.NoteLength;
-import music.model.music.MusicalData.NoteName;
-import music.model.music.MusicalData.Scale;
+import music.model.data.Key;
+import music.model.data.Measure;
+import music.model.data.MusicalData;
+import music.model.data.Note;
+import music.model.data.Piece;
+import music.model.data.TimeSignature;
+import music.model.data.MusicalData.Clef;
+import music.model.data.MusicalData.Dynamics;
+import music.model.data.MusicalData.NoteLength;
+import music.model.data.MusicalData.NoteName;
+import music.model.data.MusicalData.Scale;
 
 public class MusicXMLParser 
 {

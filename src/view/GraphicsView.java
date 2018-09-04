@@ -1,8 +1,10 @@
 package view;
 
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 import javax.imageio.ImageIO;
 
@@ -13,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.Tab;
@@ -24,16 +27,18 @@ import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import utilities.GeneralData;
 import utilities.PropertyManager;
+import utilities.Utilities;
 
 public class GraphicsView
 {
 	@FXML private Label chosenFileLabel;
 	@FXML private Label nameOfChosenFile;
 	@FXML private Button newFileButton;
+	@FXML private Button augmentationButton;
 	@FXML private TabPane mainTabPane;
 	@FXML private Tab originalImageTab;
 	@FXML private TextField augmentationTextField;
-	
+	@FXML private CheckBox graphicsVerboseCheckBox;
 	@FXML private ImageView originalImageView;
 	@FXML private ImageView noiseRemovedImageView;
 	@FXML private ImageView linesImageView;
@@ -154,12 +159,46 @@ public class GraphicsView
 		try 
 		{
 			String n = augmentationTextField.getText();
-//			// PropertyManager.getAugmentationScriptPath() + " " + n);
-			Process p = Runtime.getRuntime().exec("python " + PropertyManager.getAugmentationScriptGraphics() + " " + n);
-			System.out.println(p.getOutputStream());
-			System.err.println(p.getErrorStream());
+			Process pAugmentor = Runtime.getRuntime().exec("pip install Augmentor");
+	        
+			if (GeneralData.graphicsVerbose)
+			{
+				String line;
+				BufferedReader is = new BufferedReader(new InputStreamReader(pAugmentor.getInputStream()));
+		        while ((line = is.readLine()) != null)
+		              System.out.println(line);
+				
+		        BufferedReader es = new BufferedReader(new InputStreamReader(pAugmentor.getErrorStream()));
+		        while ((line = es.readLine()) != null)
+		              System.out.println(line);
+			}
+			pAugmentor.destroy();
+			
+			Process p = Runtime.getRuntime().exec("python " + PropertyManager.getAugmentationScriptGraphics() + " " + n + " test");
+			
+			if (GeneralData.graphicsVerbose)
+			{
+				String line;
+				BufferedReader is = new BufferedReader(new InputStreamReader(p.getInputStream()));
+		        while ((line = is.readLine()) != null)
+		              System.out.println(line);
+	        
+		        BufferedReader es = new BufferedReader(new InputStreamReader(p.getErrorStream()));
+		        while ((line = es.readLine()) != null)
+		              System.out.println(line);
+			}
+			p.destroy();
+			
+			augmentationButton.setText("Done");
 		} 
 		catch (IOException e) {	e.printStackTrace();	}
+	}
+	
+	@FXML
+	public void onGraphicsVerboseCheckBoxClicked()
+	{
+		GeneralData.graphicsVerbose = graphicsVerboseCheckBox.isSelected();
+		System.out.println(GeneralData.graphicsVerbose);
 	}
 	
 	private void showOriginalImage()

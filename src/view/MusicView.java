@@ -16,15 +16,16 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.chart.XYChart.Series;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
-import music.model.music.MusicDataManager;
-import music.model.music.MusicalData;
-import music.model.music.Piece;
+import music.model.data.MusicDataManager;
+import music.model.data.MusicalData;
+import music.model.data.Piece;
 import music.model.parser.MusicXMLParser;
 import utilities.GeneralData;
 import utilities.PropertyManager;
@@ -35,7 +36,7 @@ public class MusicView
 	@FXML private Label nameOfChosenFile;
 	@FXML private Button newFileButton;
 	@FXML private Button augmentationButton;
-	
+	@FXML private CheckBox musicVerboseCheckBox;
 	@FXML private BarChart<String, Number> harmonyBarChart;
 	@FXML private BarChart<String, Number> rhythmBarChart;
 	
@@ -224,6 +225,13 @@ public class MusicView
 	        br.close();
 		} 
 		catch (Exception e) {	e.printStackTrace();	}
+	}
+	
+	@FXML
+	public void onMusicVerboseCheckBoxClicked()
+	{
+		GeneralData.musicVerbose = musicVerboseCheckBox.isSelected();
+		System.out.println(GeneralData.musicVerbose);
 	}
 	
 	private int doVariation(int originalValue, int range)

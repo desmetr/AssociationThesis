@@ -22,7 +22,7 @@ class MyComparator implements Comparator<Entry<String, Double>>
 	}
 }
 
-public class Utilities 
+public class Utilities
 {
 	public static float[] convertHexToHSV(int hex)
 	{

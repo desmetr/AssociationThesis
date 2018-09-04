@@ -15,7 +15,7 @@ import utilities.PropertyManager;
 public class AssociationView 
 {
 	@FXML private TextArea textAreaResult;
-	@FXML private CheckBox verboseCheckBox;
+	@FXML private CheckBox associationVerboseCheckBox;
 	
 	private AssociationDataManager dataManager;
 	private AssociationModelManager associationManager;
@@ -80,9 +80,9 @@ public class AssociationView
 	}
 	
 	@FXML
-	public void onVerboseCheckBoxClicked()
+	public void onAssociationVerboseCheckBoxClicked()
 	{
-		GeneralData.verbose = verboseCheckBox.isSelected();
-		System.out.println(GeneralData.verbose);
+		GeneralData.associationVerbose = associationVerboseCheckBox.isSelected();
+		System.out.println(GeneralData.associationVerbose);
 	}
 }
