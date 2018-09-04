@@ -67,7 +67,6 @@ public class GraphicsView
 	{
 		dataManager = new GraphicsDataManager();
 		graphicsParser = new GraphicsParser(dataManager);
-		dataManager.writeLabelsToFile();
 	}
 		
 	@FXML

@@ -3,7 +3,7 @@ package association;
 import java.io.File;
 import java.io.IOException;
 
-import org.apache.commons.math3.fitting.leastsquares.LeastSquaresProblem.Evaluation;
+import org.deeplearning4j.eval.Evaluation;
 import org.datavec.api.records.reader.RecordReader;
 import org.datavec.api.records.reader.impl.csv.CSVRecordReader;
 import org.datavec.api.split.FileSplit;
@@ -27,9 +27,9 @@ import org.nd4j.linalg.lossfunctions.LossFunctions;
 
 import utilities.PropertyManager;
 
-public class AssociationManager
+public class AssociationModelManager
 {	
-	public AssociationManager()
+	public AssociationModelManager()
 	{
 	}
 	
@@ -86,14 +86,13 @@ public class AssociationManager
 		model.setListeners(new ScoreIterationListener(100));
 		
 		model.fit(trainingData);
-		return "";
 		
 		// TODO evaluation ding
-//		Evaluation eval = new Evaluation(3);
-//		INDArray output = model.output(testData.getFeatureMatrix());
-//		eval.eval(testData.getLabels(), output);
-//		
-//		 //Print the evaluation statistics
-//		return eval.stats();	
+		Evaluation eval = new Evaluation(3);
+		INDArray output = model.output(testData.getFeatureMatrix());
+		eval.eval(testData.getLabels(), output);
+		
+		 //Print the evaluation statistics
+		return eval.stats();	
 	}
 }

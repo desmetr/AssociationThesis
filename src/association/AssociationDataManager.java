@@ -35,9 +35,7 @@ public class AssociationDataManager
 	
 	public String processImagesData() 
 	{		
-		// Specify the root directory.
-		String baseDir = PropertyManager.getMainFolderGraphics();
-		String inputPath = baseDir + "vectorsGraphics.csv";
+		String inputPath = PropertyManager.getMainFolderGraphics() + "vectorsGraphics.csv";
 		
 		// Read data file
 	    List<String[]> graphicsInputData = new ArrayList<>();
@@ -76,9 +74,7 @@ public class AssociationDataManager
 	
 	public String processMusicData() 
 	{		
-		// Specify the root directory.
-		String baseDir = PropertyManager.getResultFolderMusic();
-		String inputPath = baseDir + "vectorsMusic.csv";
+		String inputPath = PropertyManager.getResultFolderMusic() + "vectorsMusic.csv";
 		
 		// Read data file
 		List<String[]> musicInputData = new ArrayList<>();

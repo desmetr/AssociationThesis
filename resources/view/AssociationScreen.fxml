@@ -13,7 +13,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1017.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AssociationView">
    <center>
-      <TextArea fx:id="textAreaResult" prefHeight="468.0" prefWidth="690.0" BorderPane.alignment="CENTER">
+      <TextArea fx:id="textAreaResult" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets top="10.0" />
          </BorderPane.margin></TextArea>

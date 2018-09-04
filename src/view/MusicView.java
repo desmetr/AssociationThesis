@@ -57,7 +57,6 @@ public class MusicView
 	{
 		parser = new MusicXMLParser();
 		dataManager = new MusicDataManager();
-		dataManager.writeLabelsToFile();
 	}
 	
 	@FXML
@@ -73,6 +72,9 @@ public class MusicView
 		{
 			File dir = new File(folder);
 			File[] directoryListing = dir.listFiles();
+			
+			dataManager.writeLabelsToFile();
+			
 			if (directoryListing != null) 
 			{
 				for (File selectedFile : directoryListing) 
@@ -103,6 +105,7 @@ public class MusicView
 		    currentPiece = parser.parse(selectedFile);
 		    
 		    dataManager.setPiece(currentPiece);
+		    dataManager.writeLabelsToFile();
 		    dataManager.writeValuesToFile();
 			
 			generalTextArea.setText(currentPiece.toString());
