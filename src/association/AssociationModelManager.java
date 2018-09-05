@@ -73,10 +73,10 @@ public class AssociationModelManager
 	            .l2(1e-4)
 	            .list()
 	            .layer(0, new DenseLayer.Builder().nIn(numInputs).nOut(200).build())
-	            .layer(1, new DenseLayer.Builder().nIn(200).nOut(200).build())
-	            .layer(2, new DenseLayer.Builder().nIn(200).nOut(200).build())
+	            .layer(1, new DenseLayer.Builder().nIn(200).nOut(150).build())
+	            .layer(2, new DenseLayer.Builder().nIn(150).nOut(85).build())
 	            .layer(3, new OutputLayer.Builder(LossFunctions.LossFunction.NEGATIVELOGLIKELIHOOD)
-	                    .activation(Activation.SIGMOID).nIn(200).nOut(outputNum).build())
+	                    .activation(Activation.SIGMOID).nIn(85).nOut(outputNum).build())
 	            .backprop(true).pretrain(false)
 	            .build();
 	

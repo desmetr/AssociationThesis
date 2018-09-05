@@ -1,0 +1,311 @@
+{	5 Graphics 5 Music 3 Layers
+
+	Examples labeled as 0 classified by model as 0: 1 times
+
+	Warning: 2 classes were never predicted by the model and were excluded from average precision
+	Classes excluded from average precision: [1, 2]
+	Warning: 2 classes were never predicted by the model and were excluded from average recall
+	Classes excluded from average recall: [1, 2]
+
+	==========================Scores========================================
+	 # of classes:    3
+	 Accuracy:        0.5000
+	 Precision:       0.5000	(2 classes excluded from average)
+	 Recall:          1.0000	(2 classes excluded from average)
+	 F1 Score:        0.6667	(2 classes excluded from average)
+	Precision, recall & F1: macro-averaged (equally weighted avg. of 3 classes)
+	========================================================================
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+{	2505 Graphics 2505 Music 3 Layers
+
+	Warning: 3 classes were never predicted by the model and were excluded from average precision
+	Classes excluded from average precision: [0, 1, 2]
+	Warning: 2 classes were never predicted by the model and were excluded from average recall
+	Classes excluded from average recall: [0, 2]
+
+	==========================Scores========================================
+	 # of classes:    3
+	 Accuracy:        0.0000
+	 Precision:       NaN	(3 classes excluded from average)
+	 Recall:          0.0000	(2 classes excluded from average)
+	 F1 Score:        NaN	(3 classes excluded from average)
+	Precision, recall & F1: macro-averaged (equally weighted avg. of 3 classes)
+	========================================================================
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+{	2505 Graphics 2505 Music 4 Layers + correcte classes (4/5) + foute values numClasses in code
+	
+	Examples labeled as 0 classified by model as 1: 82 times
+	Examples labeled as 1 classified by model as 1: 49 times
+	Examples labeled as 2 classified by model as 1: 17 times
+
+	Warning: 1 class was never predicted by the model and was excluded from average precision
+	Classes excluded from average precision: [2]
+
+	==========================Scores========================================
+	 # of classes:    3
+	 Accuracy:        0.0489
+	 Precision:       0.1571	(1 class excluded from average)
+	 Recall:          0.0805
+	 F1 Score:        0.1365	(1 class excluded from average)
+	Precision, recall & F1: macro-averaged (equally weighted avg. of 3 classes)
+	========================================================================
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+{	2505 Graphics 2505 Music 4 Layers + correcte classes (4/5) + correcte values numClasses in code (1)
+	
+	Examples labeled as 0 classified by model as 0: 93 times
+	Examples labeled as 0 classified by model as 1: 209 times
+	Examples labeled as 1 classified by model as 1: 199 times
+	Examples labeled as 2 classified by model as 0: 23 times
+	Examples labeled as 2 classified by model as 1: 178 times
+	Examples labeled as 2 classified by model as 2: 1 times
+
+	==========================Scores========================================
+	 # of classes:    3
+	 Accuracy:        0.2924
+	 Precision:       0.6110
+	 Recall:          0.4376
+	 F1 Score:        0.2663
+	Precision, recall & F1: macro-averaged (equally weighted avg. of 3 classes)
+	========================================================================
+
+	MultiLayerConfiguration conf = new NeuralNetConfiguration.Builder()
+        .seed(seed)
+        .activation(Activation.RELU)
+        .weightInit(WeightInit.RELU)
+        .updater(new Sgd(0.1))
+        .l2(1e-4)
+        .list()
+        .layer(0, new DenseLayer.Builder().nIn(numInputs).nOut(200).build())
+        .layer(1, new DenseLayer.Builder().nIn(200).nOut(200).build())
+        .layer(2, new DenseLayer.Builder().nIn(200).nOut(200).build())
+        .layer(3, new OutputLayer.Builder(LossFunctions.LossFunction.NEGATIVELOGLIKELIHOOD)
+                .activation(Activation.SIGMOID).nIn(200).nOut(outputNum).build())
+        .backprop(true).pretrain(false)
+        .build();
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+{	2505 Graphics 2505 Music 4 Layers + correcte classes (4/5) + correcte values numClasses in code (2)
+
+    Examples labeled as 0 classified by model as 0: 234 times
+	Examples labeled as 0 classified by model as 1: 56 times
+	Examples labeled as 1 classified by model as 0: 13 times
+	Examples labeled as 1 classified by model as 1: 93 times
+	Examples labeled as 2 classified by model as 0: 36 times
+	Examples labeled as 2 classified by model as 1: 52 times
+	Examples labeled as 2 classified by model as 2: 9 times
+
+	==========================Scores========================================
+	 # of classes:    3
+	 Accuracy:        0.3353
+	 Precision:       0.7162
+	 Recall:          0.4416
+	 F1 Score:        0.4316
+	Precision, recall & F1: macro-averaged (equally weighted avg. of 3 classes)
+	========================================================================
+
+	MultiLayerConfiguration conf = new NeuralNetConfiguration.Builder()
+        .seed(seed)
+        .activation(Activation.SELU)
+        .weightInit(WeightInit.RELU)
+        .updater(new Sgd(0.1))
+        .l2(1e-4)
+        .list()
+        .layer(0, new DenseLayer.Builder().nIn(numInputs).nOut(200).build())
+        .layer(1, new DenseLayer.Builder().nIn(200).nOut(200).build())
+        .layer(2, new DenseLayer.Builder().nIn(200).nOut(200).build())
+        .layer(3, new OutputLayer.Builder(LossFunctions.LossFunction.NEGATIVELOGLIKELIHOOD)
+                .activation(Activation.SIGMOID).nIn(200).nOut(outputNum).build())
+        .backprop(true).pretrain(false)
+        .build();
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+{	2505 Graphics 2505 Music 4 Layers + correcte classes (4/5) + correcte values numClasses in code (3)
+
+	Examples labeled as 0 classified by model as 0: 235 times
+	Examples labeled as 0 classified by model as 1: 60 times
+	Examples labeled as 1 classified by model as 0: 4 times
+	Examples labeled as 1 classified by model as 1: 104 times
+	Examples labeled as 2 classified by model as 0: 46 times
+	Examples labeled as 2 classified by model as 1: 45 times
+	Examples labeled as 2 classified by model as 2: 7 times
+
+
+	==========================Scores========================================
+	 # of classes:    3
+	 Accuracy:        0.3453
+	 Precision:       0.7149
+	 Recall:          0.4482
+	 F1 Score:        0.4301
+	Precision, recall & F1: macro-averaged (equally weighted avg. of 3 classes)
+	========================================================================
+
+	MultiLayerConfiguration conf = new NeuralNetConfiguration.Builder()
+        .seed(seed)
+        .activation(Activation.SELU)
+        .weightInit(WeightInit.RELU)
+        .updater(new Sgd(0.1))
+        .l2(1e-4)
+        .list()
+        .layer(0, new DenseLayer.Builder().nIn(numInputs).nOut(200).build())
+        .layer(1, new DenseLayer.Builder().nIn(200).nOut(200).build())
+        .layer(2, new DenseLayer.Builder().nIn(200).nOut(200).build())
+        .layer(3, new OutputLayer.Builder(LossFunctions.LossFunction.NEGATIVELOGLIKELIHOOD)
+                .activation(Activation.SIGMOID).nIn(200).nOut(outputNum).build())
+        .backprop(true).pretrain(false)
+        .build();
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+{	2505 Graphics 2505 Music 4 Layers + correcte classes (4/5) + interne number of outputs anders (1)
+
+	Examples labeled as 0 classified by model as 0: 321 times
+	Examples labeled as 1 classified by model as 0: 4 times
+	Examples labeled as 1 classified by model as 1: 148 times
+	Examples labeled as 1 classified by model as 2: 6 times
+	Examples labeled as 2 classified by model as 0: 1 times
+	Examples labeled as 2 classified by model as 1: 102 times
+	Examples labeled as 2 classified by model as 2: 3 times
+
+
+	==========================Scores========================================
+	 # of classes:    3
+	 Accuracy:        0.4711
+	 Precision:       0.5179
+	 Recall:          0.5776
+	 F1 Score:        0.4951
+	Precision, recall & F1: macro-averaged (equally weighted avg. of 3 classes)
+	========================================================================
+
+	MultiLayerConfiguration conf = new NeuralNetConfiguration.Builder()
+        .seed(seed)
+        .activation(Activation.SELU)
+        .weightInit(WeightInit.RELU)
+        .updater(new Sgd(0.1))
+        .l2(1e-4)
+        .list()
+        .layer(0, new DenseLayer.Builder().nIn(numInputs).nOut(200).build())
+        .layer(1, new DenseLayer.Builder().nIn(200).nOut(175).build())
+        .layer(2, new DenseLayer.Builder().nIn(175).nOut(150).build())
+        .layer(3, new OutputLayer.Builder(LossFunctions.LossFunction.NEGATIVELOGLIKELIHOOD)
+                .activation(Activation.SIGMOID).nIn(150).nOut(outputNum).build())
+        .backprop(true).pretrain(false)
+        .build();
+	
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+{	2505 Graphics 2505 Music 5 Layers + correcte classes (4/5) + interne number of outputs anders (1)
+
+	Examples labeled as 0 classified by model as 0: 304 times
+	Examples labeled as 1 classified by model as 1: 99 times
+	Examples labeled as 2 classified by model as 0: 5 times
+	Examples labeled as 2 classified by model as 2: 106 times
+
+
+	==========================Scores========================================
+	 # of classes:    3
+	 Accuracy:        0.5080
+	 Precision:       0.8506
+	 Recall:          0.6784
+	 F1 Score:        0.7367
+	Precision, recall & F1: macro-averaged (equally weighted avg. of 3 classes)
+	========================================================================
+
+	MultiLayerConfiguration conf = new NeuralNetConfiguration.Builder()
+        .seed(seed)
+        .activation(Activation.SELU)
+        .weightInit(WeightInit.RELU)
+        .updater(new Sgd(0.1))
+        .l2(1e-4)
+        .list()
+        .layer(0, new DenseLayer.Builder().nIn(numInputs).nOut(200).build())
+        .layer(1, new DenseLayer.Builder().nIn(200).nOut(175).build())
+        .layer(2, new DenseLayer.Builder().nIn(175).nOut(150).build())
+        .layer(3, new DenseLayer.Builder().nIn(150).nOut(125).build())
+        .layer(4, new OutputLayer.Builder(LossFunctions.LossFunction.NEGATIVELOGLIKELIHOOD)
+                .activation(Activation.SIGMOID).nIn(125).nOut(outputNum).build())
+        .backprop(true).pretrain(false)
+        .build();
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+{	2505 Graphics 2505 Music 5 Layers + correcte classes (4/5) + interne number of outputs anders + activation functies anders (1)
+
+	Examples labeled as 0 classified by model as 0: 317 times
+	Examples labeled as 1 classified by model as 0: 186 times
+	Examples labeled as 2 classified by model as 0: 192 times
+
+	Warning: 2 classes were never predicted by the model and were excluded from average precision
+	Classes excluded from average precision: [1, 2]
+
+	==========================Scores========================================
+	 # of classes:    3
+	 Accuracy:        0.3164
+	 Precision:       0.3164	(2 classes excluded from average)
+	 Recall:          0.3333
+	 F1 Score:        0.4807	(2 classes excluded from average)
+	Precision, recall & F1: macro-averaged (equally weighted avg. of 3 classes)
+	========================================================================
+
+	MultiLayerConfiguration conf = new NeuralNetConfiguration.Builder()
+        .seed(seed)
+        .activation(Activation.SOFTMAX)
+        .weightInit(WeightInit.RELU)
+        .updater(new Sgd(0.1))
+        .l2(1e-4)
+        .list()
+        .layer(0, new DenseLayer.Builder().nIn(numInputs).nOut(200).build())
+        .layer(1, new DenseLayer.Builder().nIn(200).nOut(175).build())
+        .layer(2, new DenseLayer.Builder().nIn(175).nOut(150).build())
+        .layer(3, new DenseLayer.Builder().nIn(150).nOut(125).build())
+        .layer(4, new OutputLayer.Builder(LossFunctions.LossFunction.NEGATIVELOGLIKELIHOOD)
+                .activation(Activation.SOFTMAX).nIn(125).nOut(outputNum).build())
+        .backprop(true).pretrain(false)
+        .build();
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+{	2505 Graphics 2505 Music 4 Layers + correcte classes (4/5) + interne number of outputs anders
+
+	Examples labeled as 0 classified by model as 0: 187 times
+	Examples labeled as 0 classified by model as 1: 21 times
+	Examples labeled as 0 classified by model as 2: 3 times
+	Examples labeled as 1 classified by model as 0: 5 times
+	Examples labeled as 1 classified by model as 1: 213 times
+	Examples labeled as 2 classified by model as 0: 1 times
+	Examples labeled as 2 classified by model as 1: 42 times
+	Examples labeled as 2 classified by model as 2: 145 times
+
+
+	==========================Scores========================================
+	 # of classes:    3
+	 Accuracy:        0.5439
+	 Precision:       0.8287
+	 Recall:          0.7825
+	 F1 Score:        0.7897
+	Precision, recall & F1: macro-averaged (equally weighted avg. of 3 classes)
+	========================================================================
+
+	MultiLayerConfiguration conf = new NeuralNetConfiguration.Builder()
+        .seed(seed)
+        .activation(Activation.SELU)
+        .weightInit(WeightInit.RELU)
+        .updater(new Sgd(0.1))
+        .l2(1e-4)
+        .list()
+        .layer(0, new DenseLayer.Builder().nIn(numInputs).nOut(200).build())
+        .layer(1, new DenseLayer.Builder().nIn(200).nOut(150).build())
+        .layer(2, new DenseLayer.Builder().nIn(150).nOut(85).build())
+        .layer(3, new OutputLayer.Builder(LossFunctions.LossFunction.NEGATIVELOGLIKELIHOOD)
+                .activation(Activation.SIGMOID).nIn(85).nOut(outputNum).build())
+        .backprop(true).pretrain(false)
+        .build();
+}
