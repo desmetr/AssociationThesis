@@ -6,6 +6,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.LinkedHashMap;
 
+import music.model.data.MusicalData;
 import utilities.GeneralData;
 import utilities.PropertyManager;
 import utilities.Utilities;;
@@ -26,31 +27,33 @@ public class GraphicsDataManager
 	
 	private Double entropy = 0.0;
 	
-	public LinkedHashMap<Integer, Integer> polygonCounts = new LinkedHashMap<Integer, Integer>();
+	private LinkedHashMap<Integer, Integer> polygonCounts = new LinkedHashMap<Integer, Integer>();
 	
 	private int numberOfCircles = 0;
 	private int numberOfEllipses = 0;
 	
-	public void increaseNumberOfVerticalLines(int toAdd)            						{ this.numberOfVerticalLines += toAdd;                  						}
-	public void increaseNumberOfHorizontalLines(int toAdd)          						{ this.numberOfHorizontalLines += toAdd;               							}
-	public void increaseNumberOfDiagonalUpLines(int toAdd)          						{ this.numberOfDiagonalUpLines += toAdd;                						}
-	public void increaseNumberOfDiagonalDownLines(int toAdd)        						{ this.numberOfDiagonalDownLines += toAdd;              						}
-	public void setNumberOfLineSegments(int numberOfLineSegments)   						{ this.numberOfLineSegments = numberOfLineSegments;								}
-	public void setNumberOfVerticalLines(int numberOfVerticalLines) 						{ this.numberOfVerticalLines = numberOfVerticalLines;							}
-	public void setNumberOfHorizontalLines(int numberOfHorizontalLines) 					{ this.numberOfHorizontalLines = numberOfHorizontalLines;						}
-	public void setNumberOfDiagonalUpLines(int numberOfDiagonalUpLines) 					{ this.numberOfDiagonalUpLines = numberOfDiagonalUpLines;						}
-	public void setNumberOfDiagonalDownLines(int numberOfDiagonalDownLines) 				{ this.numberOfDiagonalDownLines = numberOfDiagonalDownLines;					}
-	public void setNumberOfVerticalLineSegments(int numberOfVerticalLineSegments) 			{ this.numberOfVerticalLineSegments = numberOfVerticalLineSegments;				}
-	public void setNumberOfHorizontalLineSegments(int numberOfHorizontalLineSegments) 		{ this.numberOfHorizontalLineSegments = numberOfHorizontalLineSegments;			}
-	public void setNumberOfDiagonalUpLineSegments(int numberOfDiagonalUpLineSegments) 		{ this.numberOfDiagonalUpLineSegments = numberOfDiagonalUpLineSegments;			}
-	public void setNumberOfDiagonalDownLineSegments(int numberOfDiagonalDownLineSegments) 	{ this.numberOfDiagonalDownLineSegments = numberOfDiagonalDownLineSegments;		}
-	public void increaseNumberOfVerticalLineSegments(int toAdd)     						{ this.numberOfVerticalLineSegments += toAdd;     								}
-	public void increaseNumberOfHorizontalLineSegments(int toAdd) 							{ this.numberOfHorizontalLineSegments += toAdd; 								}
-	public void increaseNumberOfDiagonalUpLineSegments(int toAdd)							{ this.numberOfDiagonalUpLineSegments += toAdd;     							}
-	public void increaseNumberOfDiagonalDownLineSegments(int toAdd)							{ this.numberOfDiagonalDownLineSegments += toAdd;     							}
-	public void increaseNumberOfCircles(int toAdd) 											{ this.numberOfCircles += toAdd;												}
-	public void setNumberOfEllipses(int numberOfEllipses) 									{ this.numberOfEllipses = numberOfEllipses;										}
-	public void setEntropy(Double entropy) 													{ this.entropy = entropy;														}
+	public LinkedHashMap<Integer, Integer> getPolygonCounts()								{	return polygonCounts;														}
+	
+	public void increaseNumberOfVerticalLines(int toAdd)            						{	this.numberOfVerticalLines += toAdd;                  						}
+	public void increaseNumberOfHorizontalLines(int toAdd)          						{	this.numberOfHorizontalLines += toAdd;               						}
+	public void increaseNumberOfDiagonalUpLines(int toAdd)          						{ 	this.numberOfDiagonalUpLines += toAdd;                						}
+	public void increaseNumberOfDiagonalDownLines(int toAdd)        						{ 	this.numberOfDiagonalDownLines += toAdd;              						}
+	public void setNumberOfLineSegments(int numberOfLineSegments)   						{ 	this.numberOfLineSegments = numberOfLineSegments;							}
+	public void setNumberOfVerticalLines(int numberOfVerticalLines) 						{ 	this.numberOfVerticalLines = numberOfVerticalLines;							}
+	public void setNumberOfHorizontalLines(int numberOfHorizontalLines) 					{ 	this.numberOfHorizontalLines = numberOfHorizontalLines;						}
+	public void setNumberOfDiagonalUpLines(int numberOfDiagonalUpLines) 					{ 	this.numberOfDiagonalUpLines = numberOfDiagonalUpLines;						}
+	public void setNumberOfDiagonalDownLines(int numberOfDiagonalDownLines) 				{ 	this.numberOfDiagonalDownLines = numberOfDiagonalDownLines;					}
+	public void setNumberOfVerticalLineSegments(int numberOfVerticalLineSegments) 			{ 	this.numberOfVerticalLineSegments = numberOfVerticalLineSegments;			}
+	public void setNumberOfHorizontalLineSegments(int numberOfHorizontalLineSegments) 		{ 	this.numberOfHorizontalLineSegments = numberOfHorizontalLineSegments;		}
+	public void setNumberOfDiagonalUpLineSegments(int numberOfDiagonalUpLineSegments) 		{ 	this.numberOfDiagonalUpLineSegments = numberOfDiagonalUpLineSegments;		}
+	public void setNumberOfDiagonalDownLineSegments(int numberOfDiagonalDownLineSegments) 	{ 	this.numberOfDiagonalDownLineSegments = numberOfDiagonalDownLineSegments;	}
+	public void increaseNumberOfVerticalLineSegments(int toAdd)     						{ 	this.numberOfVerticalLineSegments += toAdd;     							}
+	public void increaseNumberOfHorizontalLineSegments(int toAdd) 							{ 	this.numberOfHorizontalLineSegments += toAdd; 								}
+	public void increaseNumberOfDiagonalUpLineSegments(int toAdd)							{ 	this.numberOfDiagonalUpLineSegments += toAdd;     							}
+	public void increaseNumberOfDiagonalDownLineSegments(int toAdd)							{	this.numberOfDiagonalDownLineSegments += toAdd;     						}
+	public void increaseNumberOfCircles(int toAdd) 											{ 	this.numberOfCircles += toAdd;												}
+	public void setNumberOfEllipses(int numberOfEllipses) 									{ 	this.numberOfEllipses = numberOfEllipses;									}
+	public void setEntropy(Double entropy) 													{ 	this.entropy = entropy;														}
 	
 	public void setNumberOfFullLines()         												
 	{
@@ -61,6 +64,17 @@ public class GraphicsDataManager
 	{
 		for (int i = 3; i <= GeneralData.circleThreshold; i++)
 			polygonCounts.put(i, 0);
+	}
+	
+	public void incrementPolygonCountsMap(int key)
+	{
+		if (!polygonCounts.containsKey(key))
+			polygonCounts.put(key, 1);
+		else
+		{
+			int currentCount = polygonCounts.get(key); 
+			polygonCounts.put(key, currentCount + 1);
+		}
 	}
 	
 	public void reset()

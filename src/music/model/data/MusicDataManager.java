@@ -36,9 +36,7 @@ public class MusicDataManager
 	public LinkedHashMap<MusicalData.Dynamics, Integer> getDynamicsCounts() 		{	return dynamicsCounts;		}
 	public LinkedHashMap<MusicalData.NoteInterval, Integer> getIntervalCounts() 	{	return intervalCounts;		}
 
-	public Piece getPiece() {
-		return piece;
-	}
+	public Piece getPiece() {	return piece;	}
 
 	public MusicDataManager(Piece piece)
 	{

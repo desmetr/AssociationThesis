@@ -14,6 +14,7 @@ import music.model.data.MusicalData;
 import music.model.data.Note;
 import music.model.data.Piece;
 import music.model.data.TimeSignature;
+import utilities.GeneralData;
 import music.model.data.MusicalData.Clef;
 import music.model.data.MusicalData.Dynamics;
 import music.model.data.MusicalData.NoteLength;
@@ -40,7 +41,9 @@ public class MusicXMLParser
 	
 	public Piece parse(File selectedFile) throws Exception
 	{
-		System.out.println(selectedFile.getName());
+		if (GeneralData.musicVerbose)
+			System.out.println("Parsing " + selectedFile.getName());
+		
 		piece = new Piece(selectedFile.getName().substring(0, selectedFile.getName().length() - 4));
 		
 		// Load file.

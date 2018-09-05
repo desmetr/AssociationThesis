@@ -28,6 +28,7 @@ public class Main extends Application
 			new PropertyManager().getAllValues();
 			MusicalData.initialize();
 			GeneralData.primaryStage = primaryStage;
+			GeneralData.preprocessMusicFiles();
 			
 			FXMLLoader loaderMain = new FXMLLoader();
 			loaderMain.setLocation(getClass().getResource("/view/MainScreen.fxml"));

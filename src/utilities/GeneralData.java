@@ -72,7 +72,7 @@ public class GeneralData
 	{
 		try 
 		{
-			for (final File fileEntry : sourceFolderMusic.listFiles()) 
+			for (final File fileEntry : sourceFolderMusic.listFiles())
 		    {
 				BufferedReader reader = new BufferedReader(new FileReader(fileEntry));
 				BufferedWriter writer = new BufferedWriter(new FileWriter(destinationFolderMusic + fileEntry.getName()));

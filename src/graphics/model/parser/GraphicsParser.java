@@ -743,14 +743,9 @@ public class GraphicsParser
 			{
 				int numberOfSides = polygons.get(i).vertexes.size;
 				if (numberOfSides > GeneralData.circleThreshold)
-				{
 					dataManager.increaseNumberOfCircles(1);
-				}
 				else if (numberOfSides >= 3)	// Polygons of size 2 or 1 don't exist.
-				{
-					int currentCount = dataManager.polygonCounts.get(numberOfSides);
-					dataManager.polygonCounts.put(numberOfSides, currentCount + 1);	
-				}
+					dataManager.incrementPolygonCountsMap(numberOfSides);
 			}
 		}
 	}

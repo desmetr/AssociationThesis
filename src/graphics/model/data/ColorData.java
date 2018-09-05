@@ -16,7 +16,5 @@ public class ColorData
 	public String getName()			{	return name;		}
 	public double getPercentage() 	{	return percentage;	}
 
-	public void setHex(int hex) 					{	this.hex = hex;					}
-	public void setName(String name) 				{	this.name = name;				}
 	public void setPercentage(double percentage) 	{	this.percentage = percentage;	}
 }

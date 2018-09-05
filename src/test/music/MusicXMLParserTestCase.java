@@ -1,4 +1,4 @@
-package music.test;
+package test.music;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -30,11 +30,9 @@ class MusicXMLParserTestCase
 	private String testXMLDestinationPath;
 	private String testFailXMLDestinationPath;
 	
-	
-	
 	public MusicXMLParserTestCase() 
 	{
-		new PropertyManager().getPropertyValues();
+		new PropertyManager().getAllValues();
 		testXMLDestinationPath = PropertyManager.getDestinationFolderMusic();
 		testFailXMLDestinationPath = PropertyManager.getFailDestinationFolderMusic();
 	}

@@ -1,4 +1,4 @@
-package music.test;
+package test.music;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -140,6 +140,66 @@ class MusicDataManagerTestCase
 			assertEquals(1, (int) musicDataManager.getNoteLengthCounts().get(NoteLength.WHOLE));
 		} 
 		catch (Exception e) {	e.printStackTrace();	}
+	}
+	
+	@Test
+	public void incrementNoteNameMap()
+	{
+		MusicDataManager musicDataManager = new MusicDataManager();
+		assertEquals(0, (int) musicDataManager.getNoteNameCounts().get(NoteName.C));
+		assertEquals(0, (int) musicDataManager.getNoteNameCounts().get(NoteName.D));
+		
+		musicDataManager.incrementNoteNameMap(NoteName.C);
+		assertEquals(1, (int) musicDataManager.getNoteNameCounts().get(NoteName.C));
+		assertEquals(0, (int) musicDataManager.getNoteNameCounts().get(NoteName.D));
+	}
+
+	@Test
+	public void incrementScaleDegreeMap()
+	{
+		MusicDataManager musicDataManager = new MusicDataManager();
+		assertEquals(0, (int) musicDataManager.getScaleDegreeCounts().get(ScaleDegree.TONIC));
+		assertEquals(0, (int) musicDataManager.getScaleDegreeCounts().get(ScaleDegree.DOMINANT));
+		
+		musicDataManager.incrementScaleDegreeMap(ScaleDegree.TONIC);
+		assertEquals(1, (int) musicDataManager.getScaleDegreeCounts().get(ScaleDegree.TONIC));
+		assertEquals(0, (int) musicDataManager.getScaleDegreeCounts().get(ScaleDegree.DOMINANT));
+	}
+
+	@Test
+	public void incrementNoteLengthMap()
+	{
+		MusicDataManager musicDataManager = new MusicDataManager();
+		assertEquals(0, (int) musicDataManager.getNoteLengthCounts().get(NoteLength.EIGHTH));
+		assertEquals(0, (int) musicDataManager.getNoteLengthCounts().get(NoteLength.QUARTER));
+		
+		musicDataManager.incrementNoteLengthMap(NoteLength.EIGHTH);
+		assertEquals(1, (int) musicDataManager.getNoteLengthCounts().get(NoteLength.EIGHTH));
+		assertEquals(0, (int) musicDataManager.getNoteLengthCounts().get(NoteLength.QUARTER));
+	}
+
+	@Test
+	public void incrementDynamicsMap()
+	{
+		MusicDataManager musicDataManager = new MusicDataManager();
+		assertEquals(0, (int) musicDataManager.getDynamicsCounts().get(Dynamics.MF));
+		assertEquals(0, (int) musicDataManager.getDynamicsCounts().get(Dynamics.MP));
+		
+		musicDataManager.incrementDynamicsMap(Dynamics.MF);
+		assertEquals(1, (int) musicDataManager.getDynamicsCounts().get(Dynamics.MF));
+		assertEquals(0, (int) musicDataManager.getDynamicsCounts().get(Dynamics.MP));
+	}
+
+	@Test
+	public void incrementIntervalMap()
+	{
+		MusicDataManager musicDataManager = new MusicDataManager();
+		assertEquals(0, (int) musicDataManager.getIntervalCounts().get(NoteInterval.MINOR_SECOND));
+		assertEquals(0, (int) musicDataManager.getIntervalCounts().get(NoteInterval.DIMINISHED_FIFTH));
+		
+		musicDataManager.incrementIntervalMap(NoteInterval.MINOR_SECOND);
+		assertEquals(1, (int) musicDataManager.getIntervalCounts().get(NoteInterval.MINOR_SECOND));
+		assertEquals(0, (int) musicDataManager.getIntervalCounts().get(NoteInterval.DIMINISHED_FIFTH));
 	}
 	
 	@Test

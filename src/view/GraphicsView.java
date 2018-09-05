@@ -158,7 +158,6 @@ public class GraphicsView
 	{
 		try 
 		{
-			String n = augmentationTextField.getText();
 			Process pAugmentor = Runtime.getRuntime().exec("pip install Augmentor");
 	        
 			if (GeneralData.graphicsVerbose)
@@ -174,6 +173,7 @@ public class GraphicsView
 			}
 			pAugmentor.destroy();
 			
+			String n = augmentationTextField.getText();
 			Process p = Runtime.getRuntime().exec("python " + PropertyManager.getAugmentationScriptGraphics() + " " + n + " test");
 			
 			if (GeneralData.graphicsVerbose)
@@ -198,7 +198,6 @@ public class GraphicsView
 	public void onGraphicsVerboseCheckBoxClicked()
 	{
 		GeneralData.graphicsVerbose = graphicsVerboseCheckBox.isSelected();
-		System.out.println(GeneralData.graphicsVerbose);
 	}
 	
 	private void showOriginalImage()

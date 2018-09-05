@@ -4,10 +4,6 @@ import java.util.ArrayList;
 
 import music.model.data.MusicalData.Dynamics;
 
-/*
- * Class that holds the information of a measure.
- */
-
 public class Measure 
 {
 	public ArrayList<Note> notes = new ArrayList<Note>();
