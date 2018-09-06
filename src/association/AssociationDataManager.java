@@ -35,7 +35,7 @@ public class AssociationDataManager
 	
 	public String processImagesData() 
 	{		
-		String inputPath = PropertyManager.getMainFolderGraphics() + "vectorsGraphics.csv";
+		String inputPath = PropertyManager.getMainFolderGraphics() + PropertyManager.getVectorDataFileGraphics();
 		
 		// Read data file
 	    List<String[]> graphicsInputData = new ArrayList<>();
@@ -67,14 +67,14 @@ public class AssociationDataManager
 	    	graphicsData.add(Utilities.convertStringArrayToString(inputDataStringArrayNoName, ","));
 	    }
 	    
-	    resultText = "Number of images: " + String.valueOf(graphicsInputData.size());
+	    resultText = "Number of images: " + String.valueOf(graphicsInputData.size() - 1);
 	    resultText += "\n";
 	    return resultText;
 	}
 	
 	public String processMusicData() 
 	{		
-		String inputPath = PropertyManager.getResultFolderMusic() + "vectorsMusic.csv";
+		String inputPath = PropertyManager.getResultFolderMusic() + PropertyManager.getVectorDataFileMusic();
 		
 		// Read data file
 		List<String[]> musicInputData = new ArrayList<>();
@@ -117,7 +117,7 @@ public class AssociationDataManager
 	        musicData.add(Utilities.convertStringArrayToString(inputDataStringArrayNoName, ","));
         }
         
-        resultText = "Number of music pieces: " + String.valueOf(musicInputData.size());
+        resultText = "Number of music pieces: " + String.valueOf(musicInputData.size() - 1);
         resultText += "\n";
         return resultText;
 	}

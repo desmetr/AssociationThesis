@@ -36,8 +36,8 @@ public class AssociationModelManager
 	public String trainAndTestModel()
 	{		
         int labelIndex = 224;
-        int numClasses = 5;
-        int batchSize = 5010;
+        int numClasses = 4;
+        int batchSize = 500;
         int numLinesToSkip = 0;
         char delimiter = ',';
         
@@ -62,7 +62,7 @@ public class AssociationModelManager
         normalizer.transform(testData);        		
         
     	int numInputs = 224;
-        int outputNum = 5;
+        int outputNum = 4;
     	long seed = 6;
     	
 		MultiLayerConfiguration conf = new NeuralNetConfiguration.Builder()
@@ -87,8 +87,7 @@ public class AssociationModelManager
 		
 		model.fit(trainingData);
 		
-		// TODO evaluation ding
-		Evaluation eval = new Evaluation(3);
+		Evaluation eval = new Evaluation(numClasses);
 		INDArray output = model.output(testData.getFeatureMatrix());
 		eval.eval(testData.getLabels(), output);
 		

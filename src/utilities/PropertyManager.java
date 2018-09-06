@@ -22,12 +22,14 @@ public class PropertyManager
 //	private static String rubensFolderGraphics = "";
 	private static String augmentationScriptGraphics = "";
 	private static String testFolderGraphics = "";
+	private static String vectorDataFileGraphics = "";
 	
 	private static String sourceFolderMusic = "";
 	private static String destinationFolderMusic = "";
 	private static String failDestinationFolderMusic = "";
 	private static String resultFolderMusic = "";
 	private static String testFolderMusic = "";
+	private static String vectorDataFileMusic = "";
 //	private static String classicalFolderMusic = "";
 //	private static String jazzFolderMusic = "";
 //	private static String popFolderMusic = "";
@@ -46,12 +48,14 @@ public class PropertyManager
 //	public static String getRubensFolderGraphics() 			{	return rubensFolderGraphics;		}
 	public static String getAugmentationScriptGraphics()	{	return augmentationScriptGraphics;	}
 	public static String getTestFolderGraphics()			{	return testFolderGraphics;			}
+	public static String getVectorDataFileGraphics()		{	return vectorDataFileGraphics;		}
 	
 	public static String getSourceFolderMusic() 			{	return sourceFolderMusic;			}
 	public static String getDestinationFolderMusic() 		{	return destinationFolderMusic;		}
 	public static String getFailDestinationFolderMusic()	{	return failDestinationFolderMusic;	}
 	public static String getResultFolderMusic() 			{	return resultFolderMusic;			}
 	public static String getTestFolderMusic() 				{	return testFolderMusic;				}
+	public static String getVectorDataFileMusic()			{	return vectorDataFileMusic;		}
 //	public static String getClassicalFolderMusic() 			{	return classicalFolderMusic;		}
 //	public static String getJazzFolderMusic() 				{	return jazzFolderMusic;				}
 //	public static String getPopFolderMusic() 				{	return popFolderMusic;				}
@@ -90,6 +94,7 @@ public class PropertyManager
 //			rubensFolderGraphics = prop.getProperty("rubensFolderGraphics");
 			augmentationScriptGraphics = prop.getProperty("augmentationScriptGraphics");
 			testFolderGraphics = prop.getProperty("testFolderGraphics");
+			vectorDataFileGraphics = prop.getProperty("vectorDataFileGraphics");
 			
 			// Get music properties.
 			sourceFolderMusic = prop.getProperty("sourceFolderMusic");
@@ -97,6 +102,7 @@ public class PropertyManager
 			failDestinationFolderMusic = prop.getProperty("failDestinationFolderMusic");
 			resultFolderMusic = prop.getProperty("resultFolderMusic");
 			testFolderMusic = prop.getProperty("testFolderMusic");
+			vectorDataFileMusic = prop.getProperty("vectorDataFileMusic");
 //			classicalFolderMusic = prop.getProperty("classicalFolderMusic");
 //			jazzFolderMusic = prop.getProperty("jazzFolderMusic");
 //			popFolderMusic = prop.getProperty("popFolderMusic");

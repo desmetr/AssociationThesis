@@ -67,6 +67,8 @@ public class GraphicsView
 	
 	private GraphicsDataManager dataManager;
 	
+	private int numberOfPaintingsParsed = 0;
+	
 	@FXML 
 	public void initialize()
 	{
@@ -137,7 +139,8 @@ public class GraphicsView
 					nameOfChosenFile.setText(GeneralData.currentFileName);
 				
 				graphicsParser.parseImage(ImageIO.read(selectedFile));
-				dataManager.writeLabelsToFile();
+				if (numberOfPaintingsParsed < 1)
+					dataManager.writeLabelsToFile();
 				dataManager.writeValuesToFile();
 				dataManager.reset();
 				
@@ -148,6 +151,8 @@ public class GraphicsView
 				showEllipseDetectionImages();
 				showEdgeDetectionImages();
 				showPolygonDetectionImages();
+				
+				numberOfPaintingsParsed++;
 			}			
 		} 
 		catch (IOException e) {	e.printStackTrace();	}

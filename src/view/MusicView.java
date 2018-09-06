@@ -207,7 +207,7 @@ public class MusicView
 		        	}
 	        	
 	        		augmentationStringBuilder.append("\n");
-	        		Files.write(Paths.get("results" + File.separator + "vectorsMusic.csv"), augmentationStringBuilder.toString().getBytes(), StandardOpenOption.APPEND);
+	        		Files.write(Paths.get(PropertyManager.getResultFolderMusic() + "vectorsMusic.csv"), augmentationStringBuilder.toString().getBytes(), StandardOpenOption.APPEND);
 	        	}
 	        	
 	        	if (iter == numberOfLines)
