@@ -7,6 +7,7 @@ import java.util.Map;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import music.model.data.MusicalData;
@@ -20,11 +21,14 @@ public class Main extends Application
 	public static BorderPane root;
 	public static Map<ScreenType, BorderPane> screens;
 	
+	private Image icon;
+
 	@Override
 	public void start(Stage primaryStage) 
 	{
 		try
 		{	
+			icon = new Image("icon.png");
 			new PropertyManager().getAllValues();
 			MusicalData.initialize();
 			GeneralData.primaryStage = primaryStage;
@@ -53,9 +57,11 @@ public class Main extends Application
 			Scene scene = new Scene(root, 1250, 750);	
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			
+			primaryStage.getIcons().add(icon);
 			primaryStage.setTitle("Association Thesis");
 			primaryStage.setScene(scene);
 			primaryStage.setMaximized(true);
+		
 			primaryStage.show();
 		} 
 		catch(IOException e) { e.printStackTrace(); }

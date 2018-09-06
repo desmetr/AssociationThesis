@@ -3,11 +3,12 @@ package association;
 import java.io.File;
 import java.io.IOException;
 
-import org.deeplearning4j.eval.Evaluation;
 import org.datavec.api.records.reader.RecordReader;
 import org.datavec.api.records.reader.impl.csv.CSVRecordReader;
 import org.datavec.api.split.FileSplit;
+import org.deeplearning4j.api.storage.StatsStorage;
 import org.deeplearning4j.datasets.datavec.RecordReaderDataSetIterator;
+import org.deeplearning4j.eval.Evaluation;
 import org.deeplearning4j.nn.conf.MultiLayerConfiguration;
 import org.deeplearning4j.nn.conf.NeuralNetConfiguration;
 import org.deeplearning4j.nn.conf.layers.DenseLayer;
@@ -15,6 +16,9 @@ import org.deeplearning4j.nn.conf.layers.OutputLayer;
 import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
 import org.deeplearning4j.nn.weights.WeightInit;
 import org.deeplearning4j.optimize.listeners.ScoreIterationListener;
+import org.deeplearning4j.ui.api.UIServer;
+import org.deeplearning4j.ui.stats.StatsListener;
+import org.deeplearning4j.ui.storage.InMemoryStatsStorage;
 import org.nd4j.linalg.activations.Activation;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.dataset.DataSet;
@@ -35,12 +39,15 @@ public class AssociationModelManager
 	
 	public String trainAndTestModel()
 	{		
+		String resultText = "";
+		
         int labelIndex = 224;
         int numClasses = 4;
-        int batchSize = 500;
+        int batchSize = 2000;
         int numLinesToSkip = 0;
         char delimiter = ',';
         
+        // Model
         RecordReader recordReader = new CSVRecordReader(numLinesToSkip, delimiter);
         try 
         {
@@ -77,12 +84,25 @@ public class AssociationModelManager
 	            .layer(2, new DenseLayer.Builder().nIn(150).nOut(85).build())
 	            .layer(3, new OutputLayer.Builder(LossFunctions.LossFunction.NEGATIVELOGLIKELIHOOD)
 	                    .activation(Activation.SIGMOID).nIn(85).nOut(outputNum).build())
-	            .backprop(true).pretrain(false)
+	            .backprop(true).pretrain(true)
 	            .build();
 	
 	    //run the model
 	    MultiLayerNetwork model = new MultiLayerNetwork(conf);
 	    model.init();
+	    
+//	    // UI
+//        //Initialize the user interface backend
+//        UIServer uiServer = UIServer.getInstance();
+//
+//        //Configure where the network information (gradients, score vs. time etc) is to be stored. Here: store in memory.
+//        StatsStorage statsStorage = new InMemoryStatsStorage();         //Alternative: new FileStatsStorage(File), for saving and loading later
+//
+//        //Attach the StatsStorage instance to the UI: this allows the contents of the StatsStorage to be visualized
+//        uiServer.attach(statsStorage);
+//
+//        //Then add the StatsListener to collect this information from the network, as it trains
+//        model.setListeners(new StatsListener(statsStorage));
 		model.setListeners(new ScoreIterationListener(100));
 		
 		model.fit(trainingData);
@@ -91,7 +111,10 @@ public class AssociationModelManager
 		INDArray output = model.output(testData.getFeatureMatrix());
 		eval.eval(testData.getLabels(), output);
 		
-		 //Print the evaluation statistics
-		return eval.stats();	
+//		resultText += model.toString() + "\n";
+		resultText += eval.stats() + "\n";
+		resultText += eval.confusionToString() + "\n";
+		
+		return resultText;
 	}
 }
