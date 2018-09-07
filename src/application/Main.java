@@ -28,7 +28,7 @@ public class Main extends Application
 	{
 		try
 		{	
-			icon = new Image("icon.png");
+			icon = new Image("file:icon.png");
 			new PropertyManager().getAllValues();
 			MusicalData.initialize();
 			GeneralData.primaryStage = primaryStage;

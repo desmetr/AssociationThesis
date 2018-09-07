@@ -1,0 +1,38 @@
+Pretrain:
+
+	Gebruik een dataset A om de parameters van het netwerk al te trainen voor dat je het model loslaat op dataset B.
+	De weights (bij het gebruiken van dataset B) zijn nu niet random geïnitialiseerd maar door het trainen van dataset A.
+	Oppassen dat dataset A en B niet te veel verschillen.
+
+Activation:
+
+	Een nonlineaire (!) functie die op basis van de inputs (weights van do vorige layer en de waarde van het huidige neuron) 
+	een nieuwe weight doorstuurt naar het volgende neuron. Het laatste neuron zijn activation function beslist bv in een classificatie probleem
+	bij welke klasse een datainstance hoort.
+
+Seed:
+
+	Wordt gebruikt om de random initialisaties van de weights te doen.
+
+WeightInit:
+
+	Functie die bepaalt (samen met de seed) hoe de weights worden geïnitialiseerd.
+
+Updater:
+
+	In een DNN worden de weights geupdate per run door het netwerk. Dit is via de gradient descent techniek. 
+	Er zijn verschillende versies van zo'n gradient descent functie.
+
+l2:
+
+	Dit bepaalt welke norm er gebruikt word bij de regularisatie stap, andere mogelijkheden zijn l1, dropout, etc.
+	Regularization helpt bij het vermijden van overfitting tijdens de training.
+
+Layers:
+
+	De definitie van de layers gebruikt in het model. Zeer veel verschillende layers die elk iets anders doen en bij verschillende data beter tot hun recht komt.
+	Meest simpele en veelgebruikte: DenseLayer en OutputLayer
+
+Backpropagation:
+
+	Het achterwaards door het netwerk lopen om met behulp van de gradient descent techniek de weights te updaten.

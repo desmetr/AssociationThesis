@@ -2,11 +2,12 @@ package association;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 
 import org.datavec.api.records.reader.RecordReader;
 import org.datavec.api.records.reader.impl.csv.CSVRecordReader;
 import org.datavec.api.split.FileSplit;
-import org.deeplearning4j.api.storage.StatsStorage;
 import org.deeplearning4j.datasets.datavec.RecordReaderDataSetIterator;
 import org.deeplearning4j.eval.Evaluation;
 import org.deeplearning4j.nn.conf.MultiLayerConfiguration;
@@ -16,9 +17,6 @@ import org.deeplearning4j.nn.conf.layers.OutputLayer;
 import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
 import org.deeplearning4j.nn.weights.WeightInit;
 import org.deeplearning4j.optimize.listeners.ScoreIterationListener;
-import org.deeplearning4j.ui.api.UIServer;
-import org.deeplearning4j.ui.stats.StatsListener;
-import org.deeplearning4j.ui.storage.InMemoryStatsStorage;
 import org.nd4j.linalg.activations.Activation;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.dataset.DataSet;
@@ -111,7 +109,19 @@ public class AssociationModelManager
 		INDArray output = model.output(testData.getFeatureMatrix());
 		eval.eval(testData.getLabels(), output);
 		
-//		resultText += model.toString() + "\n";
+		iterator.reset();
+		testData = iterator.next();
+		
+		List<String> allClassLabels = recordReader.getLabels();
+		System.out.println(allClassLabels);
+		labelIndex = testData.getLabels().argMax(1).getInt(0);
+		int[] predictedClasses = model.predict(testData.getFeatures());
+		System.out.println(Arrays.toString(predictedClasses));
+		String expectedResult = allClassLabels.get(labelIndex);
+		String modelPrediction = allClassLabels.get(predictedClasses[0]);
+		resultText += "\nFor a single example that is labeled " + expectedResult + " the model predicted " + modelPrediction + "\n\n";
+		
+		resultText += model.summary() + "\n";
 		resultText += eval.stats() + "\n";
 		resultText += eval.confusionToString() + "\n";
 		
