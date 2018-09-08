@@ -75,7 +75,7 @@ public class AssociationView
 			associationManager = new AssociationModelManager();
 			resultText = associationManager.trainAndTestModel();
 			textAreaResult.appendText(resultText);
-			dataManager.deleteCSV();
+//			dataManager.deleteCSV();
 		}
 	}
 	
@@ -84,5 +84,11 @@ public class AssociationView
 	{
 		GeneralData.associationVerbose = associationVerboseCheckBox.isSelected();
 		System.out.println(GeneralData.associationVerbose);
+	}
+	
+	@FXML
+	public void onDeleteCSVButtonClicked()
+	{
+		dataManager.deleteCSV();
 	}
 }

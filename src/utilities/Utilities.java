@@ -14,6 +14,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.nd4j.linalg.api.ndarray.INDArray;
+
 class MyComparator implements Comparator<Entry<String, Double>> 
 {
 	public int compare(Entry<String, Double> o1, Entry<String, Double> o2) 
@@ -123,5 +125,17 @@ public class Utilities
 	{
 		for (Entry<K, V> entry : map.entrySet())
 			System.out.println(entry.getKey() + " " + entry.getValue());
+	}
+	
+	public static String oneHotToLabel(INDArray oneHot)
+	{		
+		System.out.println(oneHot);
+		for (int i = 0; i < oneHot.length(); i++)
+		{
+			if (oneHot.getInt(i) == 1)
+				return GeneralData.PainterLabels.values()[i].toString();
+		}
+				
+		return "";
 	}
 }

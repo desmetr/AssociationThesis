@@ -2,8 +2,8 @@ package association;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import org.datavec.api.records.reader.RecordReader;
 import org.datavec.api.records.reader.impl.csv.CSVRecordReader;
@@ -28,6 +28,7 @@ import org.nd4j.linalg.learning.config.Sgd;
 import org.nd4j.linalg.lossfunctions.LossFunctions;
 
 import utilities.PropertyManager;
+import utilities.Utilities;
 
 public class AssociationModelManager
 {	
@@ -55,6 +56,11 @@ public class AssociationModelManager
         
 		DataSetIterator iterator = new RecordReaderDataSetIterator(recordReader, batchSize, labelIndex, numClasses);
         DataSet allData = iterator.next();
+        
+        ArrayList<String> labelNames = new ArrayList<String>();
+        labelNames.addAll(Arrays.asList("Bruegel", "Mondriaan", "Picasso", "Rubens"));
+        allData.setLabelNames(labelNames);
+      
         allData.shuffle();
         SplitTestAndTrain testAndTrainData = allData.splitTestAndTrain(0.8);
 
@@ -109,17 +115,19 @@ public class AssociationModelManager
 		INDArray output = model.output(testData.getFeatureMatrix());
 		eval.eval(testData.getLabels(), output);
 		
-		iterator.reset();
-		testData = iterator.next();
+//		System.out.println(testData.getLabelName(0));
+//		resultText += "\n" + model.output(testData.get(0).getFeatures(), false) + "\n";
 		
-		List<String> allClassLabels = recordReader.getLabels();
-		System.out.println(allClassLabels);
-		labelIndex = testData.getLabels().argMax(1).getInt(0);
-		int[] predictedClasses = model.predict(testData.getFeatures());
-		System.out.println(Arrays.toString(predictedClasses));
-		String expectedResult = allClassLabels.get(labelIndex);
-		String modelPrediction = allClassLabels.get(predictedClasses[0]);
-		resultText += "\nFor a single example that is labeled " + expectedResult + " the model predicted " + modelPrediction + "\n\n";
+		for (int i = 0; i < testData.numExamples(); i++)
+		{
+			labelIndex = testData.getLabels().argMax(1).getInt(i);
+			String expectedResult = Utilities.oneHotToLabel(allData.getLabels().getRow(labelIndex));
+//			String modelPrediction = Utilities.oneHotToLabel(output.getRow(labelIndex));
+			INDArray modelPrediction = output.getRow(labelIndex);
+			resultText += "\nFor a single example that is labeled " + expectedResult + " the model predicted " + modelPrediction;
+		}
+	
+		resultText += "\n\n";
 		
 		resultText += model.summary() + "\n";
 		resultText += eval.stats() + "\n";
