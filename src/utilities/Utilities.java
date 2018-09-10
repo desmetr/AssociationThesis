@@ -129,7 +129,6 @@ public class Utilities
 	
 	public static String oneHotToLabel(INDArray oneHot)
 	{		
-		System.out.println(oneHot);
 		for (int i = 0; i < oneHot.length(); i++)
 		{
 			if (oneHot.getInt(i) == 1)

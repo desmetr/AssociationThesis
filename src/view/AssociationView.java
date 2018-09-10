@@ -89,6 +89,8 @@ public class AssociationView
 	@FXML
 	public void onDeleteCSVButtonClicked()
 	{
-		dataManager.deleteCSV();
+		associationManager = new AssociationModelManager();
+		associationManager.test();
+//		dataManager.deleteCSV();
 	}
 }
