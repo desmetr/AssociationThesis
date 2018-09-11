@@ -137,4 +137,38 @@ public class Utilities
 				
 		return "";
 	}
+	
+//	public static String getGraphicsPath(INDArray label)
+//	{
+//		int index = 0;
+//		
+//		double max = -1.0;
+//		for (int i = 0; i < label.length(); i++)
+//		{
+//			if (label.getDouble(i) >= max)
+//			{
+//				max = label.getDouble(i);
+//				index = i;
+//			}
+//		}
+//		
+//		switch (index)
+//		{
+//			case 0:
+//				return PropertyManager.getBruegelPath();
+//			case 1:
+//				return PropertyManager.getMondriaanPath();
+//			case 2:
+//				return PropertyManager.getBruegelPath();
+//			case 3:
+//				return PropertyManager.getBruegelPath();
+//			default:
+//				return null;
+//		}
+//	}
+//	
+//	public static String getMusicPath(INDArray label)
+//	{
+//		
+//	}
 }

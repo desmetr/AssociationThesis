@@ -12,13 +12,12 @@ import javafx.scene.control.TextArea;
 import utilities.GeneralData;
 import utilities.PropertyManager;
 
-public class AssociationView 
+public class AssociationTrainView 
 {
 	@FXML private TextArea textAreaResult;
 	@FXML private CheckBox associationVerboseCheckBox;
 	
 	private AssociationDataManager dataManager;
-	private AssociationModelManager associationManager;
 	
 	@FXML 
 	public void initialize()
@@ -72,8 +71,7 @@ public class AssociationView
 		}
 		else
 		{
-			associationManager = new AssociationModelManager();
-			resultText = associationManager.trainAndTestModel();
+			resultText = GeneralData.associationModelManager.trainAndTestModel();
 			textAreaResult.appendText(resultText);
 //			dataManager.deleteCSV();
 		}
@@ -89,8 +87,7 @@ public class AssociationView
 	@FXML
 	public void onDeleteCSVButtonClicked()
 	{
-		associationManager = new AssociationModelManager();
-		associationManager.test();
-//		dataManager.deleteCSV();
+		String resultText = dataManager.deleteCSV();
+		textAreaResult.appendText(resultText);	
 	}
 }

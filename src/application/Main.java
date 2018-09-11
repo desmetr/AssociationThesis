@@ -33,6 +33,7 @@ public class Main extends Application
 			MusicalData.initialize();
 			GeneralData.primaryStage = primaryStage;
 			GeneralData.preprocessMusicFiles();
+			GeneralData.initializeClasses();
 			
 			FXMLLoader loaderMain = new FXMLLoader();
 			loaderMain.setLocation(getClass().getResource("/view/MainScreen.fxml"));
@@ -48,9 +49,13 @@ public class Main extends Application
 			loaderMusic.setLocation(getClass().getResource("/view/MusicScreen.fxml"));	
 			screens.put(ScreenType.MUSIC, (BorderPane)loaderMusic.load());
 			
-			FXMLLoader loaderAssociation = new FXMLLoader();
-			loaderAssociation.setLocation(getClass().getResource("/view/AssociationScreen.fxml"));
-			screens.put(ScreenType.ASSOCIATION, (BorderPane)loaderAssociation.load());
+			FXMLLoader loaderTrainAssociation = new FXMLLoader();
+			loaderTrainAssociation.setLocation(getClass().getResource("/view/AssociationTrainScreen.fxml"));
+			screens.put(ScreenType.ASSOCIATION_TRAIN, (BorderPane)loaderTrainAssociation.load());
+			
+			FXMLLoader loaderTestAssociation = new FXMLLoader();
+			loaderTestAssociation.setLocation(getClass().getResource("/view/AssociationTestScreen.fxml"));
+			screens.put(ScreenType.ASSOCIATION_TEST, (BorderPane)loaderTestAssociation.load());
 					
 			new MainView();		
 						

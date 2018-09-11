@@ -153,12 +153,6 @@ public class AssociationDataManager
 		{
 			PrintWriter printWriter = new PrintWriter(new File(PropertyManager.getAllDataPath()));
 			StringBuilder stringBuilder = new StringBuilder();
-	        
-			HashMap<String, Integer> graphicsClasses = new HashMap<>();
-			graphicsClasses.put("bruegel", 0);
-			graphicsClasses.put("mondriaan", 1);
-			graphicsClasses.put("picasso", 2);
-			graphicsClasses.put("rubens", 3);
 			
 			// Run through graphicsEntropy and append current entry from graphicsData.
 			for (int i = 0; i < graphicsEntropy.size(); i++)
@@ -166,28 +160,29 @@ public class AssociationDataManager
 				String currentName = graphicsEntropy.get(i).getName();
 				int currentIndexGraphics = graphicsEntropy.get(i).getIndex();
 				
-				for (Entry<String, Integer> entry : graphicsClasses.entrySet())
+				for (Entry<String, Integer> entry : GeneralData.graphicsClasses.entrySet())
 				{
 					if (currentName.contains(entry.getKey()))	
 						stringBuilder.append(graphicsData.get(currentIndexGraphics) + padding() + "," + String.valueOf(entry.getValue()) + "\n");
 				}
 			}
 			
-			HashMap<String, Integer> musicClasses = new HashMap<>();
 			int currentClass = 0;
 			// Run through musicEntropy and append current entry from musicData.
 			for (int i = 0; i < musicEntropy.size(); i++)
 			{
 				String currentName = musicEntropy.get(i).getName();
-				if (! musicClasses.containsKey(currentName))
-					musicClasses.put(currentName, currentClass++);
+				if (! GeneralData.musicClasses.containsKey(currentName))
+					GeneralData.musicClasses.put(currentName, currentClass++);
 				
 				int currentIndexMusic = musicEntropy.get(i).getIndex();
 				stringBuilder.append(musicData.get(currentIndexMusic) + ",");
 				
-				if (musicClasses.containsKey(currentName))
-					stringBuilder.append(musicClasses.get(currentName) + "\n");
+				if (GeneralData.musicClasses.containsKey(currentName))
+					stringBuilder.append(GeneralData.musicClasses.get(currentName) + "\n");
 			}
+			
+			Utilities.printMap(GeneralData.musicClasses);
 			
 			printWriter.write(stringBuilder.toString());
 			printWriter.close();
@@ -197,10 +192,12 @@ public class AssociationDataManager
 		return null;
 	}
 	
-	public void deleteCSV()
+	public String deleteCSV()
 	{
 		File file = new File(PropertyManager.getAllDataPath());
 		file.delete();
+		
+		return "Deleted the CSV\n";
 	}
 	
 	private String padding()

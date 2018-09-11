@@ -16,10 +16,10 @@ public class PropertyManager
 	
 //	private static String sourceFolderGraphics = "";
 	private static String mainFolderGraphics = "";
-//	private static String bruegelFolderGraphics = "";
-//	private static String mondriaanFolderGraphics = "";
-//	private static String picassoFolderGraphics = "";
-//	private static String rubensFolderGraphics = "";
+	private static String bruegelPath = "";
+	private static String mondriaanPath = "";
+	private static String picassoPath = "";
+	private static String rubensPath = "";
 	private static String augmentationScriptGraphics = "";
 	private static String testFolderGraphics = "";
 	private static String vectorDataFileGraphics = "";
@@ -30,9 +30,10 @@ public class PropertyManager
 	private static String resultFolderMusic = "";
 	private static String testFolderMusic = "";
 	private static String vectorDataFileMusic = "";
-//	private static String classicalFolderMusic = "";
-//	private static String jazzFolderMusic = "";
-//	private static String popFolderMusic = "";
+	private static String HeyJudePath = "";
+	private static String AutumnLeavesPath = "";
+	private static String CelloSuitePath = "";
+	private static String ForTheLongestTimePath = "";
 	
 	private InputStream inputStream;
  
@@ -42,10 +43,10 @@ public class PropertyManager
 	
 //	public static String getSourceFolderGraphics() 			{	return sourceFolderGraphics;		}
 	public static String getMainFolderGraphics() 			{	return mainFolderGraphics;			}
-//	public static String getBruegelFolderGraphics() 		{	return bruegelFolderGraphics;		}
-//	public static String getMondriaanFolderGraphics() 		{	return mondriaanFolderGraphics;		}
-//	public static String getPicassoFolderGraphics() 		{	return picassoFolderGraphics;		}
-//	public static String getRubensFolderGraphics() 			{	return rubensFolderGraphics;		}
+	public static String getBruegelPath() 					{	return bruegelPath;					}
+	public static String getMondriaanPath() 				{	return mondriaanPath;				}
+	public static String getPicassoPath() 					{	return picassoPath;					}
+	public static String getRubensPath() 					{	return rubensPath;					}
 	public static String getAugmentationScriptGraphics()	{	return augmentationScriptGraphics;	}
 	public static String getTestFolderGraphics()			{	return testFolderGraphics;			}
 	public static String getVectorDataFileGraphics()		{	return vectorDataFileGraphics;		}
@@ -55,11 +56,12 @@ public class PropertyManager
 	public static String getFailDestinationFolderMusic()	{	return failDestinationFolderMusic;	}
 	public static String getResultFolderMusic() 			{	return resultFolderMusic;			}
 	public static String getTestFolderMusic() 				{	return testFolderMusic;				}
-	public static String getVectorDataFileMusic()			{	return vectorDataFileMusic;		}
-//	public static String getClassicalFolderMusic() 			{	return classicalFolderMusic;		}
-//	public static String getJazzFolderMusic() 				{	return jazzFolderMusic;				}
-//	public static String getPopFolderMusic() 				{	return popFolderMusic;				}
-	
+	public static String getVectorDataFileMusic()			{	return vectorDataFileMusic;			}
+	public static String getHeyJudePath() 					{	return HeyJudePath;					}
+	public static String getAutumnLeavesPath() 				{	return AutumnLeavesPath;			}
+	public static String getCelloSuitePath() 				{	return CelloSuitePath;				}
+	public static String getForTheLongestTimePath() 		{	return ForTheLongestTimePath;		}
+
 	public void getAllValues()
 	{
 		getPropertyValues();
@@ -88,10 +90,10 @@ public class PropertyManager
 			// Get graphics properties.
 //			sourceFolderGraphics = prop.getProperty("sourceFolderGraphics");
 			mainFolderGraphics = prop.getProperty("mainFolderGraphics");
-//			bruegelFolderGraphics = prop.getProperty("bruegelFolderGraphics");
-//			mondriaanFolderGraphics = prop.getProperty("mondriaanFolderGraphics");
-//			picassoFolderGraphics = prop.getProperty("picassoFolderGraphics");
-//			rubensFolderGraphics = prop.getProperty("rubensFolderGraphics");
+			bruegelPath = prop.getProperty("bruegelPath");
+			mondriaanPath = prop.getProperty("mondriaanPath");
+			picassoPath = prop.getProperty("picassoPath");
+			rubensPath = prop.getProperty("rubensPath");
 			augmentationScriptGraphics = prop.getProperty("augmentationScriptGraphics");
 			testFolderGraphics = prop.getProperty("testFolderGraphics");
 			vectorDataFileGraphics = prop.getProperty("vectorDataFileGraphics");
@@ -103,9 +105,10 @@ public class PropertyManager
 			resultFolderMusic = prop.getProperty("resultFolderMusic");
 			testFolderMusic = prop.getProperty("testFolderMusic");
 			vectorDataFileMusic = prop.getProperty("vectorDataFileMusic");
-//			classicalFolderMusic = prop.getProperty("classicalFolderMusic");
-//			jazzFolderMusic = prop.getProperty("jazzFolderMusic");
-//			popFolderMusic = prop.getProperty("popFolderMusic");
+			HeyJudePath = prop.getProperty("HeyJudePath");
+			AutumnLeavesPath = prop.getProperty("AutumnLeavesPath");
+			CelloSuitePath = prop.getProperty("CelloSuitePath");
+			ForTheLongestTimePath = prop.getProperty("ForTheLongestTimePath");
  		} 
  		catch (Exception e) {	e.printStackTrace();	} 
 	}
