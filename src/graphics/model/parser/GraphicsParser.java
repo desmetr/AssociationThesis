@@ -212,7 +212,7 @@ public class GraphicsParser
 		imageNegativePolygonDetection = convertImageToNegative(Utilities.deepCopy(image));
 		detectPolygons(imageNegativePolygonDetection, false);
 		
-		getShannonEntropy(image);
+		dataManager.setEntropy(Utilities.calculateEntropy(image));
 	}
 	
 	// Noise removal.
@@ -772,43 +772,6 @@ public class GraphicsParser
 		imageCannyContour = VisualizeBinaryData.renderContours(edgeContours, null, gray.width, gray.height, null);
 	}
 	
-	// https://stackoverflow.com/questions/22265872/calculation-of-entropy-of-an-image-using-java
-	private void getShannonEntropy(BufferedImage actualImage)
-	{
-		List<String> values= new ArrayList<String>();
-	    int n = 0;
-	    Map<Integer, Integer> occ = new HashMap<Integer, Integer>();
-	    
-	    for (int i = 0; i < actualImage.getHeight(); i++)
-	    {
-	    	for (int j = 0; j < actualImage.getWidth(); j++)
-	    	{
-	    		int pixel = actualImage.getRGB(j, i);
-	            int red = (pixel >> 16) & 0xff;
-	            int green = (pixel >> 8) & 0xff;
-	            int blue = (pixel) & 0xff;
-
-	            int d = (int) Math.round(0.2989 * red + 0.5870 * green + 0.1140 * blue);
-	            if (!values.contains(String.valueOf(d)))
-	            	values.add(String.valueOf(d));
-	            if (occ.containsKey(d))
-	            	occ.put(d, occ.get(d) + 1);
-	            else 
-	            	occ.put(d, 1);
-	            
-	            ++n;
-	    	}
-	    }
-	    
-	    double e = 0.0;
-	    for (Map.Entry<Integer, Integer> entry : occ.entrySet()) 
-	    {
-	        double p = (double) entry.getValue() / n;
-	        e += p * (Math.log(p) / Math.log(2));
-	    }
-	    dataManager.setEntropy(-e);
-	 }
-
 	private BufferedImage convertImageToNegative(BufferedImage positiveImage)
 	{	    
 	    int width = positiveImage.getWidth();

@@ -8,28 +8,27 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
-
+<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Insets?>
 
 <BorderPane prefHeight="701.0" prefWidth="916.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AssociationTestView">
    <center>
-      <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="701.0" prefWidth="916.0" BorderPane.alignment="CENTER">
-        <columnConstraints>
-          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="600.0" minWidth="10.0" prefWidth="458.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="460.0" minWidth="10.0" prefWidth="458.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="2.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
+      <GridPane fx:id="grid" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="701.0" prefWidth="916.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fx:id="graphicsImageView" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" />
-            <Button fx:id="randomTestInstanceButton" mnemonicParsing="false" onAction="#onRandomTestInstanceButtonClicked" prefHeight="49.0" prefWidth="204.0" text="Show Random Test Instance" GridPane.columnSpan="2" />
+            <ImageView fx:id="graphicsImageView" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.hgrow="ALWAYS" GridPane.columnIndex="0" GridPane.rowIndex="1" />
             <Label fx:id="graphicsNameLabel" text="Label" GridPane.rowIndex="3" />
             <Label fx:id="musicNameLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <ToggleButton fx:id="playMusicButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onPlayMusicButtonClicked" prefHeight="100.0" prefWidth="100.0" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label fx:id="resultLabel" GridPane.columnSpan="2" GridPane.rowIndex="1" />
+            <ToggleButton fx:id="playMusicButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onPlayMusicButtonClicked" prefHeight="100.0" prefWidth="100.0" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <children>
+                  <Button fx:id="randomTestInstanceButton" mnemonicParsing="false" onAction="#onRandomTestInstanceButtonClicked" prefHeight="49.0" prefWidth="204.0" text="Show Random Test Instance" />
+                  <Label fx:id="resultLabel">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
          </children>
       </GridPane>
    </center>

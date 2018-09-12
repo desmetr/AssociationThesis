@@ -7,33 +7,32 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map.Entry;
 
+import association.data.GraphicsInstance;
+import association.data.MusicInstance;
 import utilities.GeneralData;
 import utilities.PropertyManager;
-import utilities.Utilities;
 
 public class AssociationDataManager 
 {	
-	private List<EntropyTriplet> graphicsEntropy = new ArrayList<EntropyTriplet>();
-	private List<EntropyTriplet> musicEntropy = new ArrayList<EntropyTriplet>();
+//	private List<EntropyTriplet> graphicsEntropy = new ArrayList<EntropyTriplet>();
+//	private List<EntropyTriplet> musicEntropy = new ArrayList<EntropyTriplet>();
 	
-	private List<String> graphicsData = new LinkedList<String>();
-	private List<String> musicData = new LinkedList<String>();
+//	private List<String> graphicsData = new LinkedList<String>();
+//	private List<String> musicData = new LinkedList<String>();
 	
-	public List<String> getGraphicsData() 	{	return graphicsData;	}
-	public List<String> getMusicData() 		{	return musicData;		}
+//	public List<String> getGraphicsData() 	{	return graphicsData;	}
+//	public List<String> getMusicData() 		{	return musicData;		}
 
 	public AssociationDataManager()
 	{
 	}
 	
-	public String processImagesData() 
+	public String readImagesData() 
 	{		
 		String inputPath = PropertyManager.getMainFolderGraphics() + PropertyManager.getVectorDataFileGraphics();
 		
@@ -50,29 +49,21 @@ public class AssociationDataManager
 	    } 
 	    catch (IOException e) { e.printStackTrace();	}
 		
-	    String currentImageName;
-	    Double currentImageEntropy;
 	    String resultText = "";
 	    for (int i = 1; i < graphicsInputData.size(); i++)
-	    {
-	    	String[] inputDataStringArray = graphicsInputData.get(i);
-	    	currentImageName = inputDataStringArray[168];
-	    	String[] inputDataStringArrayNoName = Arrays.copyOf(inputDataStringArray, inputDataStringArray.length - 1);
-	    	currentImageEntropy = Double.valueOf(inputDataStringArray[19]);
-	    	
+	    {	    
+	    	GraphicsInstance currentGraphicsInstance = new GraphicsInstance(graphicsInputData.get(i), i - 1);
 	    	if (GeneralData.associationVerbose)
-	    		resultText += "--- Entropy of " + currentImageName + ": " + currentImageEntropy + "\n";
-	    
-	    	graphicsEntropy.add(new EntropyTriplet(currentImageName, currentImageEntropy, i - 1));	// Index - 1 because we ignore the first line with labels.
-	    	graphicsData.add(Utilities.convertStringArrayToString(inputDataStringArrayNoName, ","));
+	    		resultText += currentGraphicsInstance.toString();
+	    	
+	    	GeneralData.graphicsInstances.add(currentGraphicsInstance);
 	    }
 	    
-	    resultText = "Number of images: " + String.valueOf(graphicsInputData.size() - 1);
-	    resultText += "\n";
+	    resultText += "Number of images: " + String.valueOf(graphicsInputData.size() - 1) + "\n";
 	    return resultText;
 	}
 	
-	public String processMusicData() 
+	public String readMusicData() 
 	{		
 		String inputPath = PropertyManager.getResultFolderMusic() + PropertyManager.getVectorDataFileMusic();
 		
@@ -89,58 +80,39 @@ public class AssociationDataManager
 	    } 
 	    catch (IOException e) { e.printStackTrace();	}
 		
-        String currentSongName;
-        Double currentSongEntropy;
         String resultText = "";
         for (int i = 1; i < musicInputData.size(); i++)
-        {
-	        String[] inputDataStringArray = musicInputData.get(i);
-	        currentSongName = inputDataStringArray[224];
-	     
-	        String[] inputDataStringArrayNoName = Arrays.copyOf(inputDataStringArray, inputDataStringArray.length - 1);
-	        int[] inputDataIntArray = Arrays.asList(inputDataStringArrayNoName).stream().mapToInt(Integer::parseInt).toArray();
-	        
-	        int[] inputNoteNames = Arrays.copyOfRange(inputDataIntArray, 0, 12); // note names
-	        int[] inputNoteRoles = Arrays.copyOfRange(inputDataIntArray, 12, 22); // note roles
-	        int[] inputNoteIntervals = Arrays.copyOfRange(inputDataIntArray, 200, 213); // note intervals
-	        
-	        int[] entropyArray = new int[inputNoteNames.length + inputNoteRoles.length + inputNoteIntervals.length];
-	        System.arraycopy(inputNoteNames, 0, entropyArray, 0, inputNoteNames.length);
-	        System.arraycopy(inputNoteRoles, 0, entropyArray, inputNoteNames.length, inputNoteRoles.length);
-	        System.arraycopy(inputNoteIntervals, 0, entropyArray, inputNoteNames.length + inputNoteRoles.length, inputNoteIntervals.length);
-	        
-	        currentSongEntropy = calculateEntropy(entropyArray);
-	        if (GeneralData.associationVerbose)
-	        	resultText += "--- Entropy of " + currentSongName + ": " + currentSongEntropy + "\n";
-	        
-	        musicEntropy.add(new EntropyTriplet(currentSongName, currentSongEntropy, i - 1));	// Index - 1 because we ignore the first line with labels.
-	        musicData.add(Utilities.convertStringArrayToString(inputDataStringArrayNoName, ","));
+        {	     
+	        MusicInstance currentMusicInstance = new MusicInstance(musicInputData.get(i), i - 1);
+	    	if (GeneralData.associationVerbose)
+	    		resultText += currentMusicInstance.toString();
+	    	
+	    	GeneralData.musicInstances.add(currentMusicInstance);
         }
         
-        resultText = "Number of music pieces: " + String.valueOf(musicInputData.size() - 1);
-        resultText += "\n";
+        resultText += "Number of music pieces: " + String.valueOf(musicInputData.size() - 1) + "\n";
         return resultText;
 	}
 	
 	public String rank()
 	{
 		String resultText = "";
-		
-		Collections.sort(musicEntropy);
-		
-		if (GeneralData.associationVerbose)
-		{
-			resultText += "\n--- Sorted Music:\n";
-			for (EntropyTriplet entry : musicEntropy) 
-				resultText += entry.toString() + "\n";
-		}
-		
-		Collections.sort(graphicsEntropy);
+				
+		Collections.sort(GeneralData.graphicsInstances);
 		
 		if (GeneralData.associationVerbose)
 		{
 			resultText += "\n--- Sorted Graphics:\n";
-			for (EntropyTriplet entry : graphicsEntropy) 
+			for (GraphicsInstance entry : GeneralData.graphicsInstances) 
+				resultText += entry.toString() + "\n";
+		}
+		
+		Collections.sort(GeneralData.musicInstances);
+		
+		if (GeneralData.associationVerbose)
+		{
+			resultText += "\n--- Sorted Music:\n";
+			for (MusicInstance entry : GeneralData.musicInstances) 
 				resultText += entry.toString() + "\n";
 		}
 		
@@ -155,34 +127,36 @@ public class AssociationDataManager
 			StringBuilder stringBuilder = new StringBuilder();
 			
 			// Run through graphicsEntropy and append current entry from graphicsData.
-			for (int i = 0; i < graphicsEntropy.size(); i++)
+			for (int i = 0; i < GeneralData.graphicsInstances.size(); i++)
 			{
-				String currentName = graphicsEntropy.get(i).getName();
-				int currentIndexGraphics = graphicsEntropy.get(i).getIndex();
-				
+				String currentName = GeneralData.graphicsInstances.get(i).getName();
 				for (Entry<String, Integer> entry : GeneralData.graphicsClasses.entrySet())
 				{
+					// Get correct label from map
 					if (currentName.contains(entry.getKey()))	
-						stringBuilder.append(graphicsData.get(currentIndexGraphics) + padding() + "," + String.valueOf(entry.getValue()) + "\n");
+					{
+						GeneralData.graphicsInstances.get(i).setLabel(entry.getValue());
+						stringBuilder.append(GeneralData.graphicsInstances.get(i).getDataAsString() + padding() + "," + String.valueOf(entry.getValue()) + "\n");
+					}
 				}
 			}
 			
 			int currentClass = 0;
 			// Run through musicEntropy and append current entry from musicData.
-			for (int i = 0; i < musicEntropy.size(); i++)
+			for (int i = 0; i < GeneralData.musicInstances.size(); i++)
 			{
-				String currentName = musicEntropy.get(i).getName();
+				String currentName = GeneralData.musicInstances.get(i).getName();
 				if (! GeneralData.musicClasses.containsKey(currentName))
 					GeneralData.musicClasses.put(currentName, currentClass++);
 				
-				int currentIndexMusic = musicEntropy.get(i).getIndex();
-				stringBuilder.append(musicData.get(currentIndexMusic) + ",");
+				stringBuilder.append(GeneralData.musicInstances.get(i).getDataAsString() + ",");
 				
 				if (GeneralData.musicClasses.containsKey(currentName))
+				{
+					GeneralData.musicInstances.get(i).setLabel(GeneralData.musicClasses.get(currentName));
 					stringBuilder.append(GeneralData.musicClasses.get(currentName) + "\n");
+				}
 			}
-			
-			Utilities.printMap(GeneralData.musicClasses);
 			
 			printWriter.write(stringBuilder.toString());
 			printWriter.close();
@@ -206,28 +180,5 @@ public class AssociationDataManager
 		for (int i = 0; i < GeneralData.numberOfMusicFeatures - GeneralData.numberOfGraphicFeatures; i++)
 			padding += ",0";
 		return padding;
-	}
-	
-	private double calculateEntropy(int[] inputData)
-	{
-		HashMap<Integer, Integer> counts = new HashMap<Integer, Integer>();
-		for (int x : inputData)
-		{
-			if (counts.get(x) != null)
-				counts.put(x, counts.get(x) + 1);
-			else
-				counts.put(x, 1);
-		}
-		
-		double entropy = 0.0;
-		double i = 0.0;
-		Integer n = inputData.length;
-		for (int x : inputData)
-		{
-			i = (double) counts.get(x) / n;
-			entropy += (double) i * Math.log(i);
-		}
-		
-		return -entropy;
 	}
 }

@@ -28,7 +28,7 @@ public class AssociationTrainView
 	@FXML
 	public void onProcessImagesButtonClicked()
 	{
-		String resultText = dataManager.processImagesData();
+		String resultText = dataManager.readImagesData();
 		textAreaResult.appendText(resultText);
 		textAreaResult.appendText("Process Images Done\n");
 	}
@@ -36,7 +36,7 @@ public class AssociationTrainView
 	@FXML 
 	public void onProcessMusicButtonClicked()
 	{
-		String resultText = dataManager.processMusicData();
+		String resultText = dataManager.readMusicData();
 		textAreaResult.appendText(resultText);
 		textAreaResult.appendText("Process Music Done\n");
 	}

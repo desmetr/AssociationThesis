@@ -145,7 +145,7 @@ public class AssociationModelManager
 	public Pair<INDArray, INDArray> runRandomTestInstance()
 	{
 		// TODO make random index
-		int index = 0;
+		int index = 49;
 		INDArray output = model.output(testData.getFeatureMatrix());
 		INDArray expectedResult = testData.getLabels().getRow(index);
 		INDArray modelPrediction = output.getRow(index);
