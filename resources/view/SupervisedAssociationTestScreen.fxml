@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.geometry.Insets?>
 
-<BorderPane prefHeight="701.0" prefWidth="916.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AssociationTestView">
+<BorderPane prefHeight="701.0" prefWidth="916.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.SupervisedAssociationTestView">
    <center>
       <GridPane fx:id="grid" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="701.0" prefWidth="916.0" BorderPane.alignment="CENTER">
          <children>

@@ -49,14 +49,22 @@ public class Main extends Application
 			loaderMusic.setLocation(getClass().getResource("/view/MusicScreen.fxml"));	
 			screens.put(ScreenType.MUSIC, (BorderPane)loaderMusic.load());
 			
-			FXMLLoader loaderTrainAssociation = new FXMLLoader();
-			loaderTrainAssociation.setLocation(getClass().getResource("/view/AssociationTrainScreen.fxml"));
-			screens.put(ScreenType.ASSOCIATION_TRAIN, (BorderPane)loaderTrainAssociation.load());
+			FXMLLoader loaderSupervisedAssociationTrain = new FXMLLoader();
+			loaderSupervisedAssociationTrain.setLocation(getClass().getResource("/view/SupervisedAssociationTrainScreen.fxml"));
+			screens.put(ScreenType.ASSOCIATION_TRAIN_SUPERVISED, (BorderPane)loaderSupervisedAssociationTrain.load());
 			
-			FXMLLoader loaderTestAssociation = new FXMLLoader();
-			loaderTestAssociation.setLocation(getClass().getResource("/view/AssociationTestScreen.fxml"));
-			screens.put(ScreenType.ASSOCIATION_TEST, (BorderPane)loaderTestAssociation.load());
+			FXMLLoader loaderSupervisedAssociationTest = new FXMLLoader();
+			loaderSupervisedAssociationTest.setLocation(getClass().getResource("/view/SupervisedAssociationTestScreen.fxml"));
+			screens.put(ScreenType.ASSOCIATION_TEST_SUPERVISED, (BorderPane)loaderSupervisedAssociationTest.load());
 					
+			FXMLLoader loaderUnsupervisedAssociationTrain = new FXMLLoader();
+			loaderUnsupervisedAssociationTrain.setLocation(getClass().getResource("/view/UnsupervisedAssociationTrainScreen.fxml"));				
+			screens.put(ScreenType.ASSOCIATION_TRAIN_UNSUPERVISED, (BorderPane)loaderUnsupervisedAssociationTrain.load());
+			
+			FXMLLoader loaderUnsupervisedAssociationTest = new FXMLLoader();
+			loaderUnsupervisedAssociationTest.setLocation(getClass().getResource("/view/UnsupervisedAssociationTestScreen.fxml"));				
+			screens.put(ScreenType.ASSOCIATION_TEST_UNSUPERVISED, (BorderPane)loaderUnsupervisedAssociationTest.load());
+			
 			new MainView();		
 						
 			Scene scene = new Scene(root, 1250, 750);	

@@ -441,6 +441,7 @@
 	Precision, recall & F1: macro-averaged (equally weighted avg. of 4 classes)
 	========================================================================
 }
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 {	2500 Graphics 2500 Music 4 Layers + correcte classes (4/4) + SELU + RELU + correcte eval + batchSize=2000 + pretrain=true
 	
@@ -484,6 +485,7 @@
         .build();
 
 } 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 {	2500 Graphics 2500 Music 4 Layers + correcte classes (4/4) + SELU + RELU + correcte eval + batchSize=2000 + pretrain=true + NO RANK
 
@@ -540,4 +542,53 @@
         .backprop(true).pretrain(true)
         .build();
 
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+{	1000 Graphics 1000 Music 4 Layers + correcte classes (2/2) + SELU + RELU + correcte eval + batchSize=1000 + pretrain=true + SOFTMAX Activation function
+	
+	============================================================================================================================================
+	LayerName (LayerType)                   nIn,nOut       TotalParams    ParamsShape                   
+	============================================================================================================================================
+	0 (DenseLayer)                          224,200        45000          b:{1,200}, W:{224,200}        
+	1 (DenseLayer)                          200,150        30150          b:{1,150}, W:{200,150}        
+	2 (DenseLayer)                          150,85         12835          b:{1,85}, W:{150,85}          
+	3 (OutputLayer)                         85,2           172            b:{1,2}, W:{85,2}             
+	--------------------------------------------------------------------------------------------------------------------------------------------
+	            Total Parameters:  88157
+	        Trainable Parameters:  88157
+	           Frozen Parameters:  0
+	============================================================================================================================================
+
+
+	Examples labeled as 0 classified by model as 0: 100 times
+	Examples labeled as 1 classified by model as 1: 100 times
+
+
+	==========================Scores========================================
+	 # of classes:    2
+	 Accuracy:        1.0000
+	 Precision:       1.0000
+	 Recall:          1.0000
+	 F1 Score:        1.0000
+	========================================================================
+	   Predicted:         0      1
+	   Actual:
+	0  0          |     100      0
+	1  1          |       0    100
+
+	MultiLayerConfiguration conf = new NeuralNetConfiguration.Builder()
+        .seed(seed)
+        .activation(Activation.SELU)
+        .weightInit(WeightInit.RELU)
+        .updater(new Sgd(0.1))
+        .l2(1e-4)
+        .list()
+        .layer(0, new DenseLayer.Builder().nIn(numInputs).nOut(200).build())
+        .layer(1, new DenseLayer.Builder().nIn(200).nOut(150).build())
+        .layer(2, new DenseLayer.Builder().nIn(150).nOut(85).build())
+        .layer(3, new OutputLayer.Builder(LossFunctions.LossFunction.NEGATIVELOGLIKELIHOOD)
+                .activation(Activation.SOFTMAX).nIn(85).nOut(outputNum).build())
+        .backprop(true).pretrain(true)
+        .build();
 }

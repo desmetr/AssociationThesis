@@ -58,7 +58,7 @@ public class GeneralData
 	
 	public static enum Direction		{NORTHWEST, NORTH, NORTHEAST, EAST, SOUTHEAST, SOUTH, SOUTHWEST, WEST}
 	public static enum Hough			{POLAR, FOOT, FOOT_SUBIMAGE}
-	public enum ScreenType 				{GRAPHICS, MUSIC, ASSOCIATION_TRAIN, ASSOCIATION_TEST}
+	public enum ScreenType 				{GRAPHICS, MUSIC, ASSOCIATION_TRAIN_SUPERVISED, ASSOCIATION_TEST_SUPERVISED, ASSOCIATION_TRAIN_UNSUPERVISED, ASSOCIATION_TEST_UNSUPERVISED}
 	public static enum PainterLabels	{BRUEGEL, MONDRIAAN, PICASSO, RUBENS}	
 	
 	private static String oldLine8th = "<type>8th</type>";

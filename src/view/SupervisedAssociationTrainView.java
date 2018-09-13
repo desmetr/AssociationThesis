@@ -12,7 +12,7 @@ import javafx.scene.control.TextArea;
 import utilities.GeneralData;
 import utilities.PropertyManager;
 
-public class AssociationTrainView 
+public class SupervisedAssociationTrainView 
 {
 	@FXML private TextArea textAreaResult;
 	@FXML private CheckBox associationVerboseCheckBox;
@@ -71,7 +71,7 @@ public class AssociationTrainView
 		}
 		else
 		{
-			resultText = GeneralData.associationModelManager.trainAndTestModel();
+			resultText = GeneralData.associationModelManager.trainAndTestModelSupervised();
 			textAreaResult.appendText(resultText);
 //			dataManager.deleteCSV();
 		}

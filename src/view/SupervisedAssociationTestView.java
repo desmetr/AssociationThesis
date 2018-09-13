@@ -13,7 +13,7 @@ import javafx.util.Pair;
 import utilities.GeneralData;
 import utilities.Utilities;
 
-public class AssociationTestView
+public class SupervisedAssociationTestView
 {
 	@FXML private Label resultLabel;
 	@FXML private Label graphicsNameLabel;
@@ -54,7 +54,7 @@ public class AssociationTestView
 	@FXML
 	public void onRandomTestInstanceButtonClicked()
 	{
-		Pair<INDArray, INDArray> resultPair = GeneralData.associationModelManager.runRandomTestInstance();
+		Pair<INDArray, INDArray> resultPair = GeneralData.associationModelManager.testRandomInstance();
 		INDArray expectedResult = resultPair.getKey();
 		INDArray modelPrediction = resultPair.getValue();
 		

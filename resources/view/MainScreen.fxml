@@ -21,8 +21,18 @@
             </Menu>
           <Menu fx:id="associationMenu" mnemonicParsing="true" text="Association">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#onTrainAssociationClicked" text="Training" />
-                  <MenuItem mnemonicParsing="false" onAction="#onTestAssociationClicked" text="Testing" />
+                  <Menu mnemonicParsing="false" text="Supervised">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#onTrainSupervisedAssociationClicked" text="Training" />
+                        <MenuItem fx:id="testSupervisedMenuItem" mnemonicParsing="false" onAction="#onTestSupervisedAssociationClicked" text="Testing" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Unsupervised">
+                    <items>
+                      <MenuItem mnemonicParsing="false" onAction="#onTrainUnsupervisedAssociationClicked" text="Training" />
+                        <MenuItem fx:id="testUnsupervisedMenuItem" mnemonicParsing="false" onAction="#onTestUnsupervisedAssociationClicked" text="Testing" />
+                    </items>
+                  </Menu>
                </items>
             </Menu>
         </menus>
