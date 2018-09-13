@@ -45,8 +45,8 @@ public class AssociationModelManager
 		String resultText = "";
 		
         int labelIndex = 224;
-        int numClasses = 4;
-        int batchSize = 2000;
+        int numClasses = 2;
+        int batchSize = 1000;
         int numLinesToSkip = 0;
         char delimiter = ',';
         
@@ -62,7 +62,8 @@ public class AssociationModelManager
         DataSet allData = iterator.next();
         
         ArrayList<String> labelNames = new ArrayList<String>();
-        labelNames.addAll(Arrays.asList("Bruegel", "Mondriaan", "Picasso", "Rubens"));
+        labelNames.addAll(Arrays.asList("Bruegel", "Picasso"));
+//        labelNames.addAll(Arrays.asList("Bruegel", "Mondriaan", "Picasso", "Rubens"));
         allData.setLabelNames(labelNames);
       
         allData.shuffle();
@@ -77,7 +78,7 @@ public class AssociationModelManager
         normalizer.transform(testData);        		
         
     	int numInputs = 224;
-        int outputNum = 4;
+        int outputNum = numClasses;
     	long seed = 6;
     	
 		MultiLayerConfiguration conf = new NeuralNetConfiguration.Builder()

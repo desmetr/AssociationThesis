@@ -152,8 +152,8 @@ public class GeneralData
     public static void initializeClasses()
     {
     	graphicsClasses.put("bruegel", 0);
-    	graphicsClasses.put("mondriaan", 1);
-    	graphicsClasses.put("picasso", 2);
+    	graphicsClasses.put("picasso", 1);
+    	graphicsClasses.put("mondriaan", 2); 
     	graphicsClasses.put("rubens", 3);
     }
     
