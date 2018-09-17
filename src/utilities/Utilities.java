@@ -3,7 +3,10 @@ package utilities;
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorModel;
 import java.awt.image.WritableRaster;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -308,5 +311,28 @@ public class Utilities
     public static void pauseAudio()
     {
         mediaPlayer.pause();
+    }
+    
+    public static void executeCommand(String command, boolean verbose)
+    {
+    	try 
+		{
+    		Process p = Runtime.getRuntime().exec(command);
+			if (verbose)
+			{
+				String line;
+				BufferedReader is = new BufferedReader(new InputStreamReader(p.getInputStream()));
+		        while ((line = is.readLine()) != null)
+		              System.out.println(line);
+				
+		        BufferedReader es = new BufferedReader(new InputStreamReader(p.getErrorStream()));
+		        while ((line = es.readLine()) != null)
+		              System.out.println(line);
+		        
+		        System.out.println("-- Process Done --");
+			}
+			p.destroy();
+		} 
+    	catch (IOException e) {	e.printStackTrace();	}
     }
 }

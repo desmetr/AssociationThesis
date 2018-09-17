@@ -14,6 +14,9 @@ public class PropertyManager
 //	private static String resultsFolderMusic = "";
 	private static String allDataPath = "";
 	
+	private static String kmeansScript = "";
+	private static String agglomerativeScript = "";
+	
 //	private static String sourceFolderGraphics = "";
 	private static String mainFolderGraphics = "";
 	private static String bruegelPath = "";
@@ -41,6 +44,9 @@ public class PropertyManager
 //	public static String getResultsFolderMusic()			{	return resultsFolderMusic;			}
 	public static String getAllDataPath()					{	return allDataPath;					}
 	
+	public static String getKmeansScript() 					{	return kmeansScript;				}
+	public static String getAgglomerativeScript()			{	return agglomerativeScript;			}
+
 //	public static String getSourceFolderGraphics() 			{	return sourceFolderGraphics;		}
 	public static String getMainFolderGraphics() 			{	return mainFolderGraphics;			}
 	public static String getBruegelPath() 					{	return bruegelPath;					}
@@ -86,6 +92,10 @@ public class PropertyManager
 //			resultsFolderGraphics = prop.getProperty("resultsFolderGraphics");
 //			resultsFolderMusic = prop.getProperty("resultsFolderMusic");
 			allDataPath = prop.getProperty("allDataPath");
+			
+			// Get clustering properties.
+			kmeansScript = prop.getProperty("kmeansScript");
+			agglomerativeScript = prop.getProperty("agglomerativeScript");
 			
 			// Get graphics properties.
 //			sourceFolderGraphics = prop.getProperty("sourceFolderGraphics");
