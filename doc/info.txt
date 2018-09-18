@@ -36,3 +36,21 @@ Layers:
 Backpropagation:
 
 	Het achterwaards door het netwerk lopen om met behulp van de gradient descent techniek de weights te updaten.
+
+
+===================================================================================================================================================================
+
+- Cluster beide datasets apart 													| -> UNSUPERVISED CLUSTERING + DEEP LEARNING
+- Evalueer beide clusteringen apart (via standaardafwijking of iets dergelijk)	|
+
+- Label elke instance volgens zijn cluster 										|
+- Geef alle gelabelde data aan deeplearning model								| -> SUPERVISED ASSOCIATION
+- Train en test 																|
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+- Gebruik crossmodal clustering om link te leggen tussen twee datasets samen	| -> UNSUPERVISED
+
+- Label elke instance volgens zijn cluster 										|
+- Geef alle gelabelde data aan deeplearning model								| -> SUPERVISED
+- Train en test 																|

@@ -159,27 +159,32 @@ public class AssociationModelManager
 		return new Pair<INDArray, INDArray>(expectedResult, modelPrediction);
 	}
 	
-	public void trainAndTestAgglomerative(String numberOfClusters)
+	public void clusterKMeans(String numberOfClusters)
 	{
-			Utilities.executeCommand("pip install scipy", GeneralData.clusteringVerbose);
-
-			Utilities.executeCommand("pip install sklearn", GeneralData.clusteringVerbose);
-			
-			Utilities.executeCommand("pip install matplotlib", GeneralData.clusteringVerbose);
-
-			String scriptCommand = "python " + PropertyManager.getAgglomerativeScript() + " " + numberOfClusters;
-			Utilities.executeCommand(scriptCommand, true);
+		Utilities.executeCommand("pip install scipy", GeneralData.clusteringVerbose);
+		Utilities.executeCommand("pip install sklearn", GeneralData.clusteringVerbose);
+		Utilities.executeCommand("pip install matplotlib", GeneralData.clusteringVerbose);
+		
+		String scriptCommand = "python " + PropertyManager.getKmeansScript() + " " + numberOfClusters;
+		Utilities.executeCommand(scriptCommand, true);
 	}
 	
-	public void trainAndTestKMeans(String numberOfClusters)
+	public void clusterAgglomerative(String numberOfClusters)
 	{
-			Utilities.executeCommand("pip install scipy", GeneralData.clusteringVerbose);
+		Utilities.executeCommand("pip install scipy", GeneralData.clusteringVerbose);
+		Utilities.executeCommand("pip install sklearn", GeneralData.clusteringVerbose);
+		Utilities.executeCommand("pip install matplotlib", GeneralData.clusteringVerbose);
 
-			Utilities.executeCommand("pip install sklearn", GeneralData.clusteringVerbose);
-			
-			Utilities.executeCommand("pip install matplotlib", GeneralData.clusteringVerbose);
-			
-			String scriptCommand = "python " + PropertyManager.getKmeansScript() + " " + numberOfClusters;
-			Utilities.executeCommand(scriptCommand, true);
+		String scriptCommand = "python " + PropertyManager.getAgglomerativeScript() + " " + numberOfClusters;
+		Utilities.executeCommand(scriptCommand, true);
+	}
+	
+	public void clusterSOM()
+	{
+		Utilities.executeCommand("pip install --upgrade tensorflow", GeneralData.clusteringVerbose);
+		Utilities.executeCommand("pip install matplotlib", GeneralData.clusteringVerbose);
+		
+		String scriptCommand = "python " + PropertyManager.getSomScript();
+		Utilities.executeCommand(scriptCommand, true);
 	}
 }

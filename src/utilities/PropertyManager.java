@@ -16,6 +16,7 @@ public class PropertyManager
 	
 	private static String kmeansScript = "";
 	private static String agglomerativeScript = "";
+	private static String somScript = "";
 	
 //	private static String sourceFolderGraphics = "";
 	private static String mainFolderGraphics = "";
@@ -46,6 +47,7 @@ public class PropertyManager
 	
 	public static String getKmeansScript() 					{	return kmeansScript;				}
 	public static String getAgglomerativeScript()			{	return agglomerativeScript;			}
+	public static String getSomScript()						{	return somScript;					}
 
 //	public static String getSourceFolderGraphics() 			{	return sourceFolderGraphics;		}
 	public static String getMainFolderGraphics() 			{	return mainFolderGraphics;			}
@@ -96,6 +98,7 @@ public class PropertyManager
 			// Get clustering properties.
 			kmeansScript = prop.getProperty("kmeansScript");
 			agglomerativeScript = prop.getProperty("agglomerativeScript");
+			somScript = prop.getProperty("somScript");
 			
 			// Get graphics properties.
 //			sourceFolderGraphics = prop.getProperty("sourceFolderGraphics");

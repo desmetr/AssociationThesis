@@ -18,13 +18,19 @@ public class UnsupervisedAssociationTrainView
 	@FXML
 	public void onKMeansButtonClicked()
 	{		
-		GeneralData.associationModelManager.trainAndTestKMeans(clusterCountTextField.getText());
+		GeneralData.associationModelManager.clusterKMeans(clusterCountTextField.getText());
 	}
 	
 	@FXML
 	public void onAgglomerativeButtonClicked()
 	{
-		GeneralData.associationModelManager.trainAndTestAgglomerative(clusterCountTextField.getText());
+		GeneralData.associationModelManager.clusterAgglomerative(clusterCountTextField.getText());
+	}
+	
+	@FXML
+	public void onSomClusterButtonClicked()
+	{
+		GeneralData.associationModelManager.clusterSOM();
 	}
 	
 	@FXML
