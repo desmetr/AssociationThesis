@@ -81,7 +81,12 @@ public class PropertyManager
  		try 
  		{
 			Properties prop = new Properties();
-			String propFileName = "config.properties";
+			
+			String propFileName = "";
+			if (System.getProperty("os.name").equals("Ubuntu"))
+				propFileName = "configUbuntu.properties";
+			else if (System.getProperty("os.name").equals("Windows 10"))
+				propFileName = "configWindows.properties";
  
 			inputStream = getClass().getClassLoader().getResourceAsStream(propFileName);
  
